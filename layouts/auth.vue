@@ -7,7 +7,7 @@
       >
         <div class="mobile__container">
           <div class="mobile__header">
-            <div class="title__container">
+            <div>
               <h2 class="mobile__title">
                 {{ $t('signIn.welcomeToWorkQuest') }}
               </h2>
@@ -21,6 +21,27 @@
         </div>
       </span>
       <div class="template__left">
+        <span
+          v-for="(item, i) in links"
+          :key="i"
+        >
+          <div
+            v-if="$route.path === item.url"
+            class="btn__container"
+          >
+            <div class="btn__back">
+              <base-btn
+                mode="back"
+                @click="$router.go(-1)"
+              >
+                <template v-slot:left>
+                  <span class="icon-chevron_big_left" />
+                </template>
+                {{ $t('signUp.back') }}
+              </base-btn>
+            </div>
+          </div>
+        </span>
         <div
           v-if="$route.path !== '/sign-in'"
           class="btn__container"
@@ -83,6 +104,13 @@ export default {
     toMain() {
       this.$router.push('/sign-in');
     },
+  },
+  data() {
+    return {
+      links: [
+        { url: '/sign-up' },
+      ],
+    };
   },
   data() {
     return {

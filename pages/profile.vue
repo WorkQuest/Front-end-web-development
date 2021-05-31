@@ -840,6 +840,8 @@ export default {
 
 .contacts {
   &__grid {
+    height: 100%;
+    max-height: 43px;
     display: grid;
     grid-template-columns: 5fr 2fr;
   }
