@@ -397,6 +397,34 @@
   "levels": {
     "reliableEmp": "RELIABLE EMP.",
     "checkedByTime": "CHECKED BY TIME",
+    "disabled": "DISABLED"
+  },
+  "referral": {
+    "inviteFriendsHead": "Invite friends.",
+    "earnCryptoTogether": "Earn crypto together",
+    "headerSubtitle": "Earn up to 35$ in WQT every time your friends register and make first Quest on Work Quest platform.",
+    "referralReward": "Referral reward",
+    "wqtCount": "{count} WQT",
+    "lastRefReward": "Last ref reward",
+    "plusCount": "+ {count}",
+    "yourRefers": "Your refers",
+    "yourReferralLink": "Your referral link",
+    "howToInviteYourFriends": "How to invite your friends?",
+    "getLink": "Get Link",
+    "registerAndGenerate": "Register and generate referral links with a commission kickback rate.",
+    "inviteFriends": "Invite Friends",
+    "inviteYourFriends": "Invite your friends to register through the referral link and get rewards when they complete first Quest.",
+    "earnCrypto": "Earn Crypto",
+    "everyTimeYourFriends": "Every time your friends make a first Quest, you'll get up to $35 in WQT commission in real time!",
+    "historyOfRewards": "History of rewards",
+    "table": {
+      "name": "Name",
+      "userID": "User ID",
+      "txHash": "Tx hash",
+      "time": "Time",
+      "amount": "Amount",
+      "status": "Status"
+    },
     "disabled": "DISABLED",
     "higher": "HIGHER LEVEL"
   }
