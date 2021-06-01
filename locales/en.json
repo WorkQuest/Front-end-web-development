@@ -342,6 +342,7 @@
     "writeYouMessage": "Write you message"
   },
   "settings": {
+    "more": "More",
     "settings": "Settings",
     "addInfo": "Add information about you, profile photo and KYC and level up your rating",
     "alsoRating": "Also rating is depend on your profile data and reviews",
@@ -371,7 +372,16 @@
     "ceo": "CEO",
     "amazon_com": "amazon.com",
     "filterAllWorkProposals": "Filter all work proposals",
-    "changeRole": "Change role"
+    "changeRole": "Change role",
+    "2FA": "2FA",
+    "smsVerification2": "SMS verification",
+    "instruments": "Instruments",
+    "pensionProgram": "Pension program",
+    "referralProgram": "Referral program",
+    "p2pInsurance": "P2P insurance",
+    "savingProduct": "Savings product",
+    "crediting": "Crediting",
+    "liquidityMining": "Liquidity mining"
   },
   "disputes": {
     "disputes": "Disputes",
