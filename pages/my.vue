@@ -626,8 +626,6 @@ export default {
   }
 }
 
-.avatar {}
-
 .runtime {
   &__status {
     font-weight: 400;
@@ -778,7 +776,7 @@ export default {
     @include text-simple;
     color: $black800;
     font-weight: 700;
-    font-size:30px;
+    font-size: 30px;
     margin: 18px 20px 0 20px;
   }
 }

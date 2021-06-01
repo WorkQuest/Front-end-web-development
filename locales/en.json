@@ -18,7 +18,8 @@
     "agree": "Agree",
     "goToChat": "Go to chat",
     "dispute":"Open dispute",
-    "responded": "Respond send"
+    "responded": "Respond send",
+    "sendARequest": "Send a request"
   },
 
   "distance" : {

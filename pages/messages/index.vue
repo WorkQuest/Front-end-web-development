@@ -1,58 +1,104 @@
 <template>
   <div class="main">
     <div class="main__body">
-      <h2 class="page__title">
-        {{ $t('chat.messages') }}
-      </h2>
-      <div class="chat__body">
-        <div class="chat__header">
-          <div class="chat__title">
-            <div>{{ $t('chat.chat') }}</div> <div class="icon-more">
-              <span class="icon-more_horizontal" />
+      <section class="pc">
+        <div class="chat">
+          <h2 class="page__title">
+            {{ $t('chat.messages') }}
+          </h2>
+          <div class="chat__body">
+            <div class="chat__header">
+              <div class="chat__title">
+                <div>{{ $t('chat.chat') }}</div> <div class="icon-more">
+                  <span class="icon-more_horizontal" />
+                </div>
+              </div>
+            </div>
+            <div class="chat__cards">
+              <div
+                v-for="(item, i) in cards"
+                :key="i"
+              >
+                <div
+                  class="chat__card"
+                  @click="showDetails()"
+                >
+                  <div class="avatar__row">
+                    <div>
+                      <img
+                        class="profile__img"
+                        src="~/assets/img/temp/profile.svg"
+                      >
+                    </div>
+                    <div>
+                      <span class="profile__name">
+                        {{ item.name }}
+                      </span>
+                    </div>
+                    <div>
+                      <span class="profile__company">
+                        {{ item.company }}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="quest__row">
+                    <div class="quest">
+                      <span class="params">{{ $t('chat.quest') }}</span> <span class="quest__title">{{ item.questName }}</span>
+                    </div>
+                  </div>
+                  <div class="you__row">
+                    <div class="you">
+                      <span class="params">{{ $t('chat.you') }}</span> <span class="you__message">{{ item.youMessage }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="chat__cards">
+      </section>
+      <section class="mobile">
+        <div class="mobile__header">
+          <div class="title__container">
+            <h2 class="mobile__title">
+              Chat
+            </h2>
+          </div>
+          <div>
+            <span class="icon-more_vertical" />
+          </div>
+        </div>
+        <span
+          v-for="(item, i) in cards"
+          :key="i"
+        >
           <div
-            v-for="(item, i) in cards"
-            :key="i"
+            class="mobile__body"
+            @click="showDetails()"
           >
-            <div
-              class="chat__card"
-              @click="showDetails()"
-            >
-              <div class="avatar__row">
-                <div>
-                  <img
-                    class="profile__img"
-                    src="~/assets/img/temp/profile.svg"
-                  >
-                </div>
-                <div>
-                  <span class="profile__name">
-                    {{ item.name }}
-                  </span>
-                </div>
-                <div>
-                  <span class="profile__company">
-                    {{ item.company }}
-                  </span>
-                </div>
+            <div class="message__body">
+              <div class="avatar__container">
+                <img
+                  :alt="item.name"
+                  src="~assets/img/temp/photo.jpg"
+                  class="message__avatar"
+                >
               </div>
-              <div class="quest__row">
-                <div class="quest">
-                  <span class="params">{{ $t('chat.quest') }}</span> <span class="quest__title">{{ item.questName }}</span>
+              <div>
+                <div class="message__name">
+                  {{ item.name }}
                 </div>
-              </div>
-              <div class="you__row">
-                <div class="you">
-                  <span class="params">{{ $t('chat.you') }}</span> <span class="you__message">{{ item.youMessage }}</span>
+                <div class="message__text">
+                  You: {{ item.youMessage }}
+                </div>
+                <div class="message__data">
+                  14 days ago
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </span>
+      </section>
     </div>
   </div>
 </template>
@@ -134,15 +180,78 @@ export default {
 
 <style lang="scss" scoped>
 
-.icon-more_horizontal::before {
-  content: "\e951";
-  color: $black500;
-  font-size: 26px;
+.message {
+  &__avatar {
+    max-width: 74px;
+    max-height: 74px;
+    border-radius: 118px;
+  }
+  &__name {
+    @include text-simple;
+    color: $black800;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  &__body {
+    @include text-simple;
+    display: grid;
+    padding: 10px 0 0 0;
+    border-bottom: 1px solid $black100;
+    justify-items: center;
+  }
+  &__text {
+    @include text-simple;
+    font-weight: 400;
+    font-size: 14px;
+    color: $black500;
+  }
+  &__data {
+    @include text-simple;
+    font-weight: 400;
+    font-size: 12px;
+    color: $black200;
+    padding: 0 0 10px 0;
+  }
 }
 
-.icon-more {
-  margin: 0 19px 0 0;
+.mobile {
+  &__body {
+    display: grid;
+  }
+  &__title {
+    @include text-simple;
+    color: $black800;
+    font-weight: 700;
+    font-size:30px;
+    margin: 18px 20px 0 20px;
+  }
+  &__header {
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px 0 0;
+    margin: 0 0 20px 0;
+  }
 }
+
+.icon {
+  color: $black500;
+  font-size: 26px;
+  &-more_vertical::before {
+    @extend .icon;
+    content: "\e952";
+    color: $blue;
+  }
+  &-more_horizontal::before {
+    @extend .icon;
+    content: "\e951";
+  }
+  &-more {
+    margin: 0 19px 0 0;
+  }
+}
+
 .you {
   margin: 0 0 20px 0;
   &__row {
@@ -199,7 +308,7 @@ export default {
 }
 .main {
   @include main;
-&-white {
+  &-white {
    @include main-white;
    justify-content: flex-start;
    border-radius: 6px;
@@ -231,7 +340,7 @@ export default {
   &__cards {
     overflow-y: scroll;
     height: 100%;
-    weight: 100%;
+    width: 100%;
     max-height: 793px;
   }
   &__card {
@@ -257,5 +366,72 @@ export default {
 ::-webkit-scrollbar-thumb {
   border-radius: 2px;
   -webkit-box-shadow: inset 0 0 24px rgba(0, 131, 199, 1);
+}
+
+@include _2560 {
+  .mobile {
+    display: none;
+  }
+
+}
+
+@include _1700 {
+  .mobile {
+    display: none;
+  }
+
+}
+@include _1600 {
+  .mobile {
+    display: none;
+  }
+
+}
+@include _1400 {
+  .mobile {
+    display: none;
+  }
+
+}
+@include _1300 {
+  .mobile {
+    display: none;
+  }
+
+}
+@include _1199 {
+  .mobile {
+    display: none;
+  }
+  .chat {
+    margin: 0 20px 0 20px;
+  }
+}
+@include _991 {
+  .avatar {
+    &__container {
+      margin: 6px 0 0 0;
+    }
+  }
+  .message {
+    &__avatar {
+      max-height: 54px;
+      max-width: 54px;
+    }
+    &__body {
+      grid-template-columns: 1fr 6fr;
+      align-items: flex-start;
+    }
+  }
+  .pc {
+    display: none;
+  }
+  .mobile {
+    overflow-y: auto;
+    display: grid;
+    height: 100%;
+    width: 100%;
+    max-height: 775px;
+  }
 }
 </style>
