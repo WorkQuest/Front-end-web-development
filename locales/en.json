@@ -280,7 +280,13 @@
     "city": "City",
     "period": "Period",
     "thanks": "Thanks",
-    "couple": "A couple words"
+    "couple": "A couple words",
+    "depositPercentFromAQuest": "Deposit percent from a quest",
+    "firstDepositAmount": "First deposit amount*",
+    "aboutFirstDeposit": "* First deposit amount is optional. If you do not want to make a deposit, you may leave this field empty",
+    "pensionIsRegistered": "Pension is registered",
+    "currentPercent": "Current percent",
+    "depositAmount": "Deposit amount"
   },
   "ui": {
     "workers": "Workers",
@@ -425,7 +431,29 @@
       "amount": "Amount",
       "status": "Status"
     },
-    "disabled": "DISABLED",
-    "higher": "HIGHER LEVEL"
-  }
+  "disabled": "DISABLED",
+  "higher": "HIGHER LEVEL"
+  },
+ "pension": {
+   "pensionProgram": "Pension program",
+   "applyForAPension": "Apply for a pension",
+   "annualPercent": "annual percent",
+   "optional": "Optional",
+   "optionalFirstDeposit": "optional first deposit",
+   "term": "term",
+   "castomizable": "Castomizable",
+   "depositsFromQuest": "deposits from quest",
+   "howToTakePart": "How to take part in pension program?",
+   "information": "Information",
+   "download": "Download",
+   "pensionBalance": "Pension balance",
+   "makeADeposit": "Make a deposit",
+   "currentPercentFromAQuest": "Current percent from a quest",
+   "changePercent": "Change percent",
+   "everyYear": "every year",
+   "timeRemainsUntilTheEndOfThePeriod": "Time remains until the end of the period",
+   "transactionHistory": "Transaction history",
+   "withdraw": "Withdraw",
+   "prolong": "Prolong"
+ }
 }

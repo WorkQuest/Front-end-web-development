@@ -22,4 +22,8 @@ export default {
   questCreated: 'questCreated',
   raiseViews: 'raiseViews',
   invitation: 'invitation',
+  applyForAPension: 'applyForAPension',
+  pensionIsRegistered: 'pensionIsRegistered',
+  makeDeposit: 'makeDeposit',
+  changePercent: 'changePercent',
 };

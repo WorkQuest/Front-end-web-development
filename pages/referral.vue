@@ -151,27 +151,30 @@ export default {
       ],
       testFields: [
         {
-          key: 'userName', label: this.$t('referral.table.name'), sortable: false,
+          key: 'userName', label: this.$t('referral.table.name'), sortable: false, thClass: 'cell_head',
         },
         {
-          key: 'userID', label: this.$t('referral.table.userID'), sortable: false,
+          key: 'userID', label: this.$t('referral.table.userID'), sortable: false, thClass: 'cell_head',
         },
         {
-          key: 'txHash', label: this.$t('referral.table.txHash'), sortable: false,
+          key: 'txHash', label: this.$t('referral.table.txHash'), sortable: false, thClass: 'cell_head',
         },
         {
-          key: 'time', label: this.$t('referral.table.time'), sortable: false,
+          key: 'time', label: this.$t('referral.table.time'), sortable: false, thClass: 'cell_head',
         },
         {
-          key: 'amount', label: this.$t('referral.table.amount'), sortable: false,
+          key: 'amount', label: this.$t('referral.table.amount'), sortable: false, thClass: 'cell_head',
         },
         {
-          key: 'status', label: this.$t('referral.table.status'), sortable: false,
+          key: 'status', label: this.$t('referral.table.status'), sortable: false, thClass: 'cell_head',
         },
       ],
     };
   },
-  // name: 'AuthLayout',
+  async mounted() {
+    this.SetLoader(true);
+    this.SetLoader(false);
+  },
   methods: {
     doCopy(ev) {
       ev.stopPropagation();
@@ -224,7 +227,7 @@ export default {
       border-radius: 6px;
 
       &__tokens {
-        font-weight: bold;
+        font-weight: 700;
         font-size: 25px;
         color: #0083C7;
         padding: 0 20px;
@@ -418,25 +421,33 @@ export default {
         }
       }
 
-      .table {
-        &__head {
-          height: 27px;
-          align-items: center;
-          background-color: rgba(0, 131, 199, 0.1);
-          display: grid;
-          grid-template-columns: repeat(6, 1fr);
-          padding: 0 20px;
-          margin-bottom: 10px;
-          grid-gap: 10px;
-          font-size: 12px;
-          color: #0083C7;
-        }
+      &__table {
+        .table {
+          .cell {
+            padding: 0;
+            &_head {
+              @extend .cell;
+            }
+          }
+          &__header {
+            height: 27px;
+            align-items: center;
+            background-color: rgba(0, 131, 199, 0.1);
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            padding: 0 20px;
+            margin-bottom: 10px;
+            grid-gap: 10px;
+            font-size: 12px;
+            color: #0083C7;
+          }
 
-        &__rows {
-          display: grid;
-          grid-auto-rows: 33px;
-          grid-row-gap: 20px;
-          padding-bottom: 20px;
+          &__rows {
+            display: grid;
+            grid-auto-rows: 33px;
+            grid-row-gap: 20px;
+            padding-bottom: 20px;
+          }
         }
       }
 
