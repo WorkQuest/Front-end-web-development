@@ -4,12 +4,14 @@
       class="pension-page__container"
       :class="[{'pension-page__container_registered' : pensionIsReg && !isDeadline}, {'pension-page__container_expired' : isDeadline}]"
     >
-        <div class="pension-page__header">
-          <div class="title">{{ $t('pension.pensionProgram') }}</div>
-          <div class="title_sub">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus
-            magna fringilla urna, porttitor rhoncus dolor purus non enim
-          </div>
+      <div class="pension-page__header">
+        <div class="title">
+          {{ $t('pension.pensionProgram') }}
+        </div>
+        <div class="title_sub">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus
+          magna fringilla urna, porttitor rhoncus dolor purus non enim
+        </div>
       </div>
       <div
         class="pension-page__content"
@@ -18,26 +20,45 @@
         <template v-if="!pensionIsReg && !isDeadline">
           <div class="info-block__square">
             <div class="info-block__quarter">
-              <div class="info-block__title">6.5%</div>
-              <div class="info-block__subtitle">{{ $t('pension.annualPercent') }}</div>
+              <div class="info-block__title">
+                6.5%
+              </div>
+              <div class="info-block__subtitle">
+                {{ $t('pension.annualPercent') }}
+              </div>
             </div>
             <div class="info-block__quarter">
-              <div class="info-block__title">{{ $t('pension.optional') }}</div>
-              <div class="info-block__subtitle">{{ $t('pension.optionalFirstDeposit') }}</div>
+              <div class="info-block__title">
+                {{ $t('pension.optional') }}
+              </div>
+              <div class="info-block__subtitle">
+                {{ $t('pension.optionalFirstDeposit') }}
+              </div>
             </div>
             <div class="info-block__quarter">
-              <div class="info-block__title">3 years</div>
-              <div class="info-block__subtitle">{{ $t('pension.term') }}</div>
+              <div class="info-block__title">
+                3 years
+              </div>
+              <div class="info-block__subtitle">
+                {{ $t('pension.term') }}
+              </div>
             </div>
             <div class="info-block__quarter">
-              <div class="info-block__title">{{ $t('pension.castomizable') }}</div>
-              <div class="info-block__subtitle">{{ $t('pension.depositsFromQuest') }}</div>
+              <div class="info-block__title">
+                {{ $t('pension.castomizable') }}
+              </div>
+              <div class="info-block__subtitle">
+                {{ $t('pension.depositsFromQuest') }}
+              </div>
             </div>
           </div>
           <div class="info-block">
-            <div class="info-block__name_bold">{{ $t('pension.howToTakePart') }}</div>
+            <div class="info-block__name_bold">
+              {{ $t('pension.howToTakePart') }}
+            </div>
             <div class="info-block__about">
-              <div class="info-block__subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id
+              <div class="info-block__subtitle">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id
                 nunc ac arcu viverra. Aliquet egestas suspendisse id pellentesque lacus. Ut accumsan posuere viverra
                 hendrerit. Lacus volutpat id aliquam accumsan cras. Magna consectetur id sollicitudin sed eget nisl nunc.
                 Quis sagittis sodales volutpat sed.
@@ -46,28 +67,34 @@
                 class="calendar-img"
                 src="~/assets/img/ui/calendar.svg"
                 alt=""
-              />
+              >
               <div class="btn-group">
                 <base-btn
                   class="btn_bl"
                   @click="openApplyForAPensionModal()"
-                >{{ $t('pension.applyForAPension') }}</base-btn>
+                >
+                  {{ $t('pension.applyForAPension') }}
+                </base-btn>
               </div>
             </div>
           </div>
           <div class="info-block">
-            <div class="info-block__name_bold">{{ $t('pension.information') }}</div>
+            <div class="info-block__name_bold">
+              {{ $t('pension.information') }}
+            </div>
             <div class="document">
               <img
                 class="document__img"
                 src="~/assets/img/ui/pdf.svg"
                 alt=""
-              />
+              >
               <div class="document__title">
                 <div class="document__name">
                   Some_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_document.pdf
                 </div>
-                <div class="document__size">1.2 MB</div>
+                <div class="document__size">
+                  1.2 MB
+                </div>
               </div>
               <button class="btn__doc">
                 {{ $t('pension.download') }}
@@ -75,7 +102,7 @@
                   class="download"
                   src="~/assets/img/ui/download.svg"
                   alt=""
-                />
+                >
               </button>
             </div>
             <div class="document">
@@ -83,12 +110,14 @@
                 class="document__img"
                 src="~/assets/img/ui/pdf.svg"
                 alt=""
-              />
+              >
               <div class="document__title">
                 <div class="document__name">
                   Some_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_document.pdf
                 </div>
-                <div class="document__size">1.2 MB</div>
+                <div class="document__size">
+                  1.2 MB
+                </div>
               </div>
               <button class="btn__doc">
                 {{ $t('pension.download') }}
@@ -96,7 +125,7 @@
                   class="download"
                   src="~/assets/img/ui/download.svg"
                   alt=""
-                />
+                >
               </button>
             </div>
           </div>
@@ -105,37 +134,61 @@
           <base-btn
             class="btn__time-machine"
             @click="jumpInTime()"
-          >+3 years</base-btn>
+          >
+            +3 years
+          </base-btn>
           <div class="info-block__triple">
             <div class="info-block__third">
-              <div class="info-block__name">{{ $t('pension.pensionBalance') }}</div>
-              <div class="info-block__tokens">4 562 WUSD</div>
+              <div class="info-block__name">
+                {{ $t('pension.pensionBalance') }}
+              </div>
+              <div class="info-block__tokens">
+                4 562 WUSD
+              </div>
               <base-btn
                 class="btn_bl"
                 @click="openMakeDepositModal()"
-              >{{ $t('pension.makeADeposit') }}</base-btn>
+              >
+                {{ $t('pension.makeADeposit') }}
+              </base-btn>
             </div>
             <div class="info-block__third">
-              <div class="info-block__name">{{ $t('pension.currentPercentFromAQuest') }}</div>
-              <div class="info-block__tokens">15%</div>
+              <div class="info-block__name">
+                {{ $t('pension.currentPercentFromAQuest') }}
+              </div>
+              <div class="info-block__tokens">
+                15%
+              </div>
               <base-btn
                 class="btn_bl"
                 @click="openChangePercentModal()"
-              >{{ $t('pension.changePercent') }}</base-btn>
+              >
+                {{ $t('pension.changePercent') }}
+              </base-btn>
             </div>
             <div class="info-block__third_rate">
               <div class="info-block__small">
-                <div class="info-block__perc">+6.5%</div>
-                <div class="info-block__period">{{ $t('pension.everyYear') }}</div>
+                <div class="info-block__perc">
+                  +6.5%
+                </div>
+                <div class="info-block__period">
+                  {{ $t('pension.everyYear') }}
+                </div>
               </div>
               <div>
-              <div class="info-block__title_gray">{{ $t('pension.timeRemainsUntilTheEndOfThePeriod') }}</div>
-              <div class="info-block__subtitle_black">2 years 52 days</div>
+                <div class="info-block__title_gray">
+                  {{ $t('pension.timeRemainsUntilTheEndOfThePeriod') }}
+                </div>
+                <div class="info-block__subtitle_black">
+                  2 years 52 days
+                </div>
               </div>
             </div>
           </div>
           <div class="info-block">
-            <div class="info-block__name">{{ $t('pension.transactionHistory') }}</div>
+            <div class="info-block__name">
+              {{ $t('pension.transactionHistory') }}
+            </div>
             <div class="pension-page__table">
               <b-table
                 :items="items"
@@ -149,48 +202,80 @@
                   <div class="user__info">
                     <img
                       class="ava"
-                      :src=el.item.avaUrl
+                      :src="el.item.avaUrl"
                       alt=""
-                    />
-                    <div class="user__name">{{el.item.userName}}</div>
+                    >
+                    <div class="user__name">
+                      {{ el.item.userName }}
+                    </div>
                   </div>
                 </template>
-                <template #cell(userID)="el"><div class="user__value_gray">{{el.item.userID}}</div></template>
-                <template #cell(txHash)="el"><div class="user__value_gray">{{el.item.txHash}}</div></template>
-                <template #cell(time)="el"><div class="user__value_gray">{{el.item.time}}</div></template>
-                <template #cell(status)="el"><div class="user__value_green">{{el.item.status}}</div></template>
+                <template #cell(userID)="el">
+                  <div class="user__value_gray">
+                    {{ el.item.userID }}
+                  </div>
+                </template>
+                <template #cell(txHash)="el">
+                  <div class="user__value_gray">
+                    {{ el.item.txHash }}
+                  </div>
+                </template>
+                <template #cell(time)="el">
+                  <div class="user__value_gray">
+                    {{ el.item.time }}
+                  </div>
+                </template>
+                <template #cell(status)="el">
+                  <div class="user__value_green">
+                    {{ el.item.status }}
+                  </div>
+                </template>
               </b-table>
             </div>
           </div>
         </template>
         <template v-if="isDeadline">
-            <div class="info-block__grid">
-              <div>
-                <div class="info-block__name">Current pension balance</div>
-                <div class="info-block__tokens">4 562 WUSD</div>
+          <div class="info-block__grid">
+            <div>
+              <div class="info-block__name">
+                Current pension balance
               </div>
-              <div class="info-block__small_right">
-                <div class="info-block__perc">+6.5%</div>
-                <div class="info-block__period">{{ $t('pension.everyYear') }}</div>
-              </div>
-              <div>
-                <div class="info-block__title_gray">{{ $t('pension.timeRemainsUntilTheEndOfThePeriod') }}</div>
-                <div class="info-block__subtitle_black">2 years 52 days</div>
-              </div>
-              <div class="btn-group_exp">
-                <base-btn class="btn_bl">
-                  {{ $t('pension.withdraw') }}
-                </base-btn>
-                <base-btn
-                  class="btn_bl"
-                  @click="openApplyForAPensionModal()"
-                >
-                  {{ $t('pension.prolong') }}
-                </base-btn>
+              <div class="info-block__tokens">
+                4 562 WUSD
               </div>
             </div>
-            <div class="info-block">
-            <div class="info-block__name">{{ $t('pension.transactionHistory') }}</div>
+            <div class="info-block__small_right">
+              <div class="info-block__perc">
+                +6.5%
+              </div>
+              <div class="info-block__period">
+                {{ $t('pension.everyYear') }}
+              </div>
+            </div>
+            <div>
+              <div class="info-block__title_gray">
+                {{ $t('pension.timeRemainsUntilTheEndOfThePeriod') }}
+              </div>
+              <div class="info-block__subtitle_black">
+                2 years 52 days
+              </div>
+            </div>
+            <div class="btn-group_exp">
+              <base-btn class="btn_bl">
+                {{ $t('pension.withdraw') }}
+              </base-btn>
+              <base-btn
+                class="btn_bl"
+                @click="openApplyForAPensionModal()"
+              >
+                {{ $t('pension.prolong') }}
+              </base-btn>
+            </div>
+          </div>
+          <div class="info-block">
+            <div class="info-block__name">
+              {{ $t('pension.transactionHistory') }}
+            </div>
             <div class="pension-page__table">
               <b-table
                 :items="items"
@@ -204,16 +289,34 @@
                   <div class="user__info">
                     <img
                       class="ava"
-                      :src=el.item.avaUrl
+                      :src="el.item.avaUrl"
                       alt=""
-                    />
-                    <div class="user__name">{{el.item.userName}}</div>
+                    >
+                    <div class="user__name">
+                      {{ el.item.userName }}
+                    </div>
                   </div>
                 </template>
-                <template #cell(userID)="el"><div class="user__value_gray">{{el.item.userID}}</div></template>
-                <template #cell(txHash)="el"><div class="user__value_gray">{{el.item.txHash}}</div></template>
-                <template #cell(time)="el"><div class="user__value_gray">{{el.item.time}}</div></template>
-                <template #cell(status)="el"><div class="user__value_green">{{el.item.status}}</div></template>
+                <template #cell(userID)="el">
+                  <div class="user__value_gray">
+                    {{ el.item.userID }}
+                  </div>
+                </template>
+                <template #cell(txHash)="el">
+                  <div class="user__value_gray">
+                    {{ el.item.txHash }}
+                  </div>
+                </template>
+                <template #cell(time)="el">
+                  <div class="user__value_gray">
+                    {{ el.item.time }}
+                  </div>
+                </template>
+                <template #cell(status)="el">
+                  <div class="user__value_green">
+                    {{ el.item.status }}
+                  </div>
+                </template>
               </b-table>
             </div>
           </div>
@@ -293,14 +396,14 @@ export default {
       ],
     };
   },
-  async mounted() {
-    this.SetLoader(true);
-    this.SetLoader(false);
-  },
   computed: {
     ...mapGetters({
       options: 'modals/getOptions',
     }),
+  },
+  async mounted() {
+    this.SetLoader(true);
+    this.SetLoader(false);
   },
   methods: {
     openApplyForAPensionModal() {

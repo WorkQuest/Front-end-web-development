@@ -4,7 +4,7 @@
       <div class="referral-page__header">
         <div class="title">
           {{ $t('referral.inviteFriendsHead') }}
-          <br />
+          <br>
           {{ $t('referral.earnCryptoTogether') }}
         </div>
         <div class="title_sub">
@@ -14,17 +14,25 @@
       <div class="referral-page__content">
         <div class="info-block_couple">
           <div class="info-block">
-            <div class="info-block__name">{{ $t('referral.referralReward') }}</div>
-            <div class="info-block__tokens">{{ $tc('referral.wqtCount', 12) }}</div>
-            <div class="info-block__name">{{ $t('referral.lastRefReward') }}</div>
+            <div class="info-block__name">
+              {{ $t('referral.referralReward') }}
+            </div>
+            <div class="info-block__tokens">
+              {{ $tc('referral.wqtCount', 12) }}
+            </div>
+            <div class="info-block__name">
+              {{ $t('referral.lastRefReward') }}
+            </div>
             <div class="user_last-reward">
               <div class="user__info">
                 <img
                   class="ava"
                   src=""
                   alt=""
-                />
-                <div class="user__name">Edward Cooper</div>
+                >
+                <div class="user__name">
+                  Edward Cooper
+                </div>
               </div>
               <div class="user__value_green">
                 {{ $tc('referral.plusCount', $tc('referral.wqtCount', 12)) }}
@@ -32,36 +40,44 @@
             </div>
           </div>
           <div class="info-block">
-            <div class="info-block__name">{{$t('referral.yourRefers')}}</div>
+            <div class="info-block__name">
+              {{ $t('referral.yourRefers') }}
+            </div>
             <div class="info-block__refers">
               <div class="info-block__avatar">
                 <img
                   class="ava_list"
                   src="~/assets/img/social/FACEBOOK.png"
                   alt=""
-                />
+                >
               </div>
               <div class="info-block__avatar">
                 <img
                   class="ava_list"
                   src="~/assets/img/social/TWITTER.png"
                   alt=""
-                />
+                >
               </div>
               <div class="info-block__avatar">
                 <img
                   class="ava_list"
                   src="~/assets/img/social/GOOGLE_+_.png"
                   alt=""
-                />
+                >
               </div>
               <div class="info-block__avatar">
-                <div class="info-block__more">{{$tc('referral.plusCount', 17)}}</div>
+                <div class="info-block__more">
+                  {{ $tc('referral.plusCount', 17) }}
+                </div>
               </div>
             </div>
-            <div class="info-block__name">{{$t('referral.yourReferralLink')}}</div>
+            <div class="info-block__name">
+              {{ $t('referral.yourReferralLink') }}
+            </div>
             <div class="info-block__link">
-              <div class="address">{{'referLink'}}</div>
+              <div class="address">
+                {{ 'referLink' }}
+              </div>
               <button
                 type="button"
                 @click="doCopy"
@@ -69,30 +85,46 @@
                 <img
                   src="~/assets/img/ui/square_link.svg"
                   alt=""
-                />
+                >
               </button>
             </div>
           </div>
         </div>
         <div class="info-block">
-          <div class="info-block__name_bold">{{$t('referral.howToInviteYourFriends')}}</div>
+          <div class="info-block__name_bold">
+            {{ $t('referral.howToInviteYourFriends') }}
+          </div>
           <div class="info-block__steps">
             <div class="step">
-              <div class="step__name">{{$t('referral.getLink')}}</div>
-              <div class="step__about">{{$t('referral.registerAndGenerate')}}</div>
+              <div class="step__name">
+                {{ $t('referral.getLink') }}
+              </div>
+              <div class="step__about">
+                {{ $t('referral.registerAndGenerate') }}
+              </div>
             </div>
             <div class="step">
-              <div class="step__name">{{$t('referral.inviteFriends')}}</div>
-              <div class="step__about">{{$t('referral.inviteYourFriends')}}</div>
+              <div class="step__name">
+                {{ $t('referral.inviteFriends') }}
+              </div>
+              <div class="step__about">
+                {{ $t('referral.inviteYourFriends') }}
+              </div>
             </div>
             <div class="step">
-              <div class="step__name">{{$t('referral.earnCrypto')}}</div>
-              <div class="step__about">{{$t('referral.everyTimeYourFriends')}}</div>
+              <div class="step__name">
+                {{ $t('referral.earnCrypto') }}
+              </div>
+              <div class="step__about">
+                {{ $t('referral.everyTimeYourFriends') }}
+              </div>
             </div>
           </div>
         </div>
         <div class="info-block">
-          <div class="info-block__name">{{$t('referral.historyOfRewards')}}</div>
+          <div class="info-block__name">
+            {{ $t('referral.historyOfRewards') }}
+          </div>
           <div class="referral-page__table">
             <b-table
               :items="items"
@@ -106,16 +138,33 @@
                 <div class="user__info">
                   <img
                     class="ava"
-                    :src=el.item.avaUrl
+                    :src="el.item.avaUrl"
                     alt=""
-                  />
-                  <div class="user__name">{{el.item.userName}}</div>
+                  >
+                  <div class="user__name">
+                    {{ el.item.userName }}
+                  </div>
+                </div>
+              </template><template #cell(userID)="el">
+                <div class="user__value_gray">
+                  {{ el.item.userID }}
                 </div>
               </template>
-              <template #cell(userID)="el"><div class="user__value_gray">{{el.item.userID}}</div></template>
-              <template #cell(txHash)="el"><div class="user__value_gray">{{el.item.txHash}}</div></template>
-              <template #cell(time)="el"><div class="user__value_gray">{{el.item.time}}</div></template>
-              <template #cell(status)="el"><div class="user__value_green">{{el.item.status}}</div></template>
+              <template #cell(txHash)="el">
+                <div class="user__value_gray">
+                  {{ el.item.txHash }}
+                </div>
+              </template>
+              <template #cell(time)="el">
+                <div class="user__value_gray">
+                  {{ el.item.time }}
+                </div>
+              </template>
+              <template #cell(status)="el">
+                <div class="user__value_green">
+                  {{ el.item.status }}
+                </div>
+              </template>
             </b-table>
           </div>
         </div>
@@ -179,7 +228,6 @@ export default {
     doCopy(ev) {
       ev.stopPropagation();
       this.$copyText(this.referLink).then(() => {
-        alert('Copied');
       });
     },
   },

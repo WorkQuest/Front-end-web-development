@@ -5,7 +5,7 @@
   >
     <div class="ctm-modal__content">
       <div class="ctm-modal__content-field">
-        <label for="cardNumber_input">{{$t('modals.depositAmount')}}</label>
+        <label for="cardNumber_input">{{ $t('modals.depositAmount') }}</label>
         <input
           id="cardNumber_input"
           class="input_grey"

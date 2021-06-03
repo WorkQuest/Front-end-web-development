@@ -19,7 +19,9 @@
           class="input_grey"
           placeholder="130 WUSD"
         >
-        <div class="">{{ $t('modals.aboutFirstDeposit') }}</div>
+        <div class="">
+          {{ $t('modals.aboutFirstDeposit') }}
+        </div>
       </div>
       <div class="btn__container">
         <div class="btn__wrapper">

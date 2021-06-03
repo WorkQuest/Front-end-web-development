@@ -4,7 +4,9 @@
     :title="$t('pension.changePercent')"
   >
     <div class="ctm-modal__content">
-      <div class="ctm-modal__desc_left">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor</div>
+      <div class="ctm-modal__desc_left">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor
+      </div>
       <div class="ctm-modal__content-field">
         <label for="cardNumber_input">{{ $t('modals.currentPercent') }}</label>
         <input
