@@ -5,28 +5,29 @@
   >
     <div class="ctm-modal__content">
       <div class="ctm-modal__content-field">
-        <label for="cardNumber_input">{{ $t('modals.depositAmount') }}</label>
+        <label
+          for="depositAmount_input"
+          class="ctm-modal__label"
+        >{{ $t('modals.depositAmount') }}</label>
         <input
-          id="cardNumber_input"
+          id="depositAmount_input"
           class="input_grey"
           placeholder="3 500"
         >
       </div>
-      <div class="btn__container">
-        <div class="btn__wrapper">
+      <div class="ctm-modal__content-btns">
+        <div class="btn-group">
           <base-btn
-            class="message__action"
-            @click="showPensionIsRegisteredModal()"
-          >
-            {{ $t('meta.submit') }}
-          </base-btn>
-        </div>
-        <div class="btn__wrapper">
-          <base-btn
-            class="message__action"
+            class="btn"
             @click="hide()"
           >
             {{ $t('meta.cancel') }}
+          </base-btn>
+          <base-btn
+            class="btn_bl"
+            @click="showPensionIsRegisteredModal()"
+          >
+            {{ $t('meta.submit') }}
           </base-btn>
         </div>
       </div>
@@ -60,13 +61,55 @@ export default {
 
 <style lang="scss" scoped>
 .ctm-modal {
+  @include modalKit;
   &__content-field {
     margin: 15px 0 0 0;
   }
-}
 
-.ctm-modal {
-  @include modalKit;
+  &__content-btns {
+    .btn-group {
+      display: grid;
+      grid-template-columns: repeat(2, calc(50% - 10px));
+      grid-gap: 20px;
+      gap: 20px;
+      margin-top: 25px;
+
+      .btn {
+        box-sizing: border-box;
+        font-weight: 400;
+        font-size: 16px;
+        color: #0083C7;
+        border: 1px solid #0083C71A;
+        border-radius: 6px;
+        transition: .3s;
+        background-color: #fff;
+
+        &:hover {
+          background-color: #0083C71A;
+          border: 0px;
+        }
+
+        &_bl {
+          @extend .btn;
+          background-color: #0083C7;
+          border: unset;
+          color: #fff;
+
+          &:hover {
+            background-color: #103d7c;
+          }
+        }
+      }
+    }
+  }
+
+  &__label {
+    margin-bottom: 5px;
+  }
+
+  &__content {
+    padding-top: 0 !important;
+  }
 }
 
 .input {
@@ -81,25 +124,6 @@ export default {
     &::placeholder {
       color: $black200;
     }
-  }
-}
-.grid {
-  &__2col {
-    display: grid;
-    grid-template-columns: 49% 49%;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-}
-.btn {
-  &__container {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    margin: 15px 0 0 0;
-  }
-  &__wrapper {
-    width: 45%;
   }
 }
 

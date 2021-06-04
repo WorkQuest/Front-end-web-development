@@ -76,16 +76,13 @@
             </div>
             <div class="info-block__link">
               <div class="address">
-                {{ 'referLink' }}
+                {{ this.referLink }}
               </div>
               <button
                 type="button"
                 @click="doCopy"
               >
-                <img
-                  src="~/assets/img/ui/square_link.svg"
-                  alt=""
-                >
+                <span class="icon-copy address__icon" />
               </button>
             </div>
           </div>
@@ -403,6 +400,13 @@ export default {
           text-overflow: ellipsis;
           font-size: 16px;
           color: #1D2127;
+          &__icon {
+            font-size: 24px;
+            &::before {
+              color: $blue;
+
+            }
+          }
         }
       }
 
