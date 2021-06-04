@@ -76,7 +76,7 @@
             </div>
             <div class="info-block__link">
               <div class="address">
-                {{ this.referLink }}
+                {{ referLink }}
               </div>
               <button
                 type="button"
