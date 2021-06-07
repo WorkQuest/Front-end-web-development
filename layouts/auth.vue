@@ -24,6 +24,7 @@
         <span
           v-for="(item, i) in links"
           :key="i"
+          style="display: none"
         >
           <div
             v-if="$route.path === item.url"
@@ -104,13 +105,6 @@ export default {
     toMain() {
       this.$router.push('/sign-in');
     },
-  },
-  data() {
-    return {
-      links: [
-        { url: '/sign-up' },
-      ],
-    };
   },
   data() {
     return {

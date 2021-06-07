@@ -294,6 +294,9 @@ export default {
       this.pickerValue -= 1;
     },
     showQuestCreatedModal() {
+      console.log(this.priorityIndex);
+      const categoryBlock = document.getElementById('category_input');
+      console.log(this.categories[this.categoryIndex]);
       this.ShowModal({
         key: modals.questCreated,
       });
