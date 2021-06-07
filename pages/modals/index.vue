@@ -76,6 +76,26 @@
     >
       showRaiseViewsModal
     </base-btn>
+    <base-btn
+      @click="showApplyForAPensionModal()"
+    >
+      showApplyForAPensionModal
+    </base-btn>
+    <base-btn
+      @click="showPensionIsRegisteredModal()"
+    >
+      showPensionIsRegisteredModal
+    </base-btn>
+    <base-btn
+      @click="showMakeDeposit()"
+    >
+      showMakeDeposit
+    </base-btn>
+    <base-btn
+      @click="showChangePercent()"
+    >
+      showChangePercent
+    </base-btn>
   </div>
 </template>
 
@@ -164,6 +184,26 @@ export default {
     showThanksModal() {
       this.ShowModal({
         key: modals.thanks,
+      });
+    },
+    showApplyForAPensionModal() {
+      this.ShowModal({
+        key: modals.applyForAPension,
+      });
+    },
+    showPensionIsRegisteredModal() {
+      this.ShowModal({
+        key: modals.pensionIsRegistered,
+      });
+    },
+    showMakeDeposit() {
+      this.ShowModal({
+        key: modals.makeDeposit,
+      });
+    },
+    showChangePercent() {
+      this.ShowModal({
+        key: modals.changePercent,
       });
     },
   },

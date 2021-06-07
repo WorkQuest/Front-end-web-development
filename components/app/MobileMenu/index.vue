@@ -6,7 +6,7 @@
     >
       <div class="mobile-menu__item">
         <span class="icon-list_check" />
-        <span>Quests</span>
+        <span class="mobile-menu__text">{{ $t('mobile.quests') }}</span>
       </div>
     </nuxt-link>
     <nuxt-link
@@ -15,7 +15,7 @@
     >
       <div class="mobile-menu__item">
         <span class="icon-list_ul" />
-        <span>My quests</span>
+        <span class="mobile-menu__text">{{ $t('mobile.myQuests') }}</span>
       </div>
     </nuxt-link>
     <nuxt-link
@@ -24,7 +24,7 @@
     >
       <div class="mobile-menu__item">
         <span class="icon-message" />
-        <span>Chat</span>
+        <span class="mobile-menu__text">{{ $t('mobile.chat') }}</span>
       </div>
     </nuxt-link>
     <nuxt-link
@@ -33,19 +33,18 @@
     >
       <div class="mobile-menu__item">
         <span class="icon-credit_card" />
-        <span>Wallet</span>
+        <span class="mobile-menu__text">{{ $t('mobile.wallet') }}</span>
       </div>
     </nuxt-link>
     <nuxt-link
       class="mobile-menu__link"
-      to="/"
+      to="/settings"
     >
       <div class="mobile-menu__item">
         <span class="icon-more_horizontal" />
-        <span>More</span>
+        <span class="mobile-menu__text">{{ $t('mobile.more') }}</span>
       </div>
     </nuxt-link>
-    <!--    TODO: NEED ADD FUNC FOR COMPONENT-->
   </div>
 </template>
 
@@ -103,5 +102,13 @@ export default {
       justify-content: center;
       align-items: center;
     }
+}
+
+@include _380 {
+  .mobile-menu {
+    &__text {
+      font-size: 12px;
+    }
+  }
 }
 </style>

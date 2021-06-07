@@ -367,7 +367,7 @@ export default {
   .auth {
     &__icons {
       grid-template-columns: repeat(5, 1fr);
-      grid-gap: 28px;
+      grid-gap: 22px;
     }
     &__mobile {
       margin: 20px 0 10px 0;

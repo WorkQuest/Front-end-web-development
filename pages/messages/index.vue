@@ -43,12 +43,14 @@
                   </div>
                   <div class="quest__row">
                     <div class="quest">
-                      <span class="params">{{ $t('chat.quest') }}</span> <span class="quest__title">{{ item.questName }}</span>
+                      <span class="params">{{ $t('chat.quest') }}</span>
+                      <span class="quest__title">{{ item.questName }}</span>
                     </div>
                   </div>
                   <div class="you__row">
                     <div class="you">
-                      <span class="params">{{ $t('chat.you') }}</span> <span class="you__message">{{ item.youMessage }}</span>
+                      <span class="params">{{ $t('chat.you') }}</span>
+                      <span class="you__message">{{ item.youMessage }}</span>
                     </div>
                   </div>
                 </div>
@@ -61,7 +63,7 @@
         <div class="mobile__header">
           <div class="title__container">
             <h2 class="mobile__title">
-              Chat
+              {{ $t('mobile.chat') }}
             </h2>
           </div>
           <div>
@@ -84,7 +86,7 @@
                   class="message__avatar"
                 >
               </div>
-              <div>
+              <div class="message__container">
                 <div class="message__name">
                   {{ item.name }}
                 </div>
@@ -181,6 +183,7 @@ export default {
 <style lang="scss" scoped>
 
 .message {
+  &__container {}
   &__avatar {
     max-width: 74px;
     max-height: 74px;
@@ -432,6 +435,25 @@ export default {
     height: 100%;
     width: 100%;
     max-height: 775px;
+  }
+}
+
+@include _480 {
+  .message {
+    &__container {
+      margin: 0 0 0 10px;
+    }
+  }
+}
+
+@include _380 {
+  .message {
+    &__body {
+      padding: 10px;
+    }
+    &__data {
+      padding: 0;
+    }
   }
 }
 </style>

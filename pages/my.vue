@@ -194,10 +194,10 @@
     </section>
 
     <section class="mobile">
-      <h2 class="mobile__title">
-        My quests
-      </h2>
       <div class="mobile__header">
+        <h2 class="mobile__title">
+          {{ $t('mobile.myQuests') }}
+        </h2>
         <div class="mobile__menu">
           <base-btn
             v-for="item in tabsMobile"
@@ -230,15 +230,15 @@
                   class="level__title"
                   :class="[{'level__title_black': item.type === 2}]"
                 >
-                  <span v-if="item.type === 5">You invited</span>
-                  <span v-if="item.type === 4">Active</span>
-                  <span v-if="item.type === 3">Performed</span>
-                  <span v-if="item.type === 2">You requested</span>
+                  <span v-if="item.type === 5">{{ $t('mobile.youInvited') }}</span>
+                  <span v-if="item.type === 4">{{ $t('mobile.active') }}</span>
+                  <span v-if="item.type === 3">{{ $t('mobile.performed') }}</span>
+                  <span v-if="item.type === 2">{{ $t('mobile.youRequested') }}</span>
                 </div>
                 <div class="runtime__container">
                   <div class="runtime__status">
                     <span v-if="item.type === 5" />
-                    <span v-if="item.type === 4">Runtime</span>
+                    <span v-if="item.type === 4">{{ $t('mobile.runtime') }}</span>
                     <span v-if="item.type === 3" />
                     <span v-if="item.type === 2" />
                   </div>
@@ -267,7 +267,7 @@
                   <span class="icon-location" />
                 </div>
                 <div class="location__distance">
-                  {{ item.distance }}m from you
+                  {{ item.distance }} {{ $t('mobile.mFromYou') }}
                 </div>
               </div>
               <div class="cards__title">
@@ -277,14 +277,64 @@
                 {{ item.desc }}
               </div>
               <div class="cards__bottom">
-                <div class="cards__priority_low">
-                  Low priority
-                </div>
+                <span v-if="item.type !== 3">
+                  <div
+                    v-if="item.level.code === 1"
+                    class="cards__priority_low"
+                  >
+                    {{ $t('mobile.priority.low') }}
+                  </div>
+                  <div
+                    v-if="item.level.code === 2"
+                    class="cards__priority_urgent"
+                  >
+                    {{ $t('mobile.priority.urgent') }}
+                  </div>
+                  <div
+                    v-if="item.level.code === 3"
+                    class="cards__priority_normal"
+                  >
+                    {{ $t('mobile.priority.normal') }}
+                  </div>
+                </span>
+                <span
+                  v-if="item.type === 3"
+                  class="cards__stars"
+                >
+                  <div class="block__details">
+                    <button
+                      v-if="item.type !== 3"
+                      class="block__btn"
+                      @click="showDetails()"
+                    >
+                      <span
+                        class="block__text block__text_details"
+                      >
+                        {{ $t('meta.details') }}
+                      </span>
+                      <span class="icon-short_right" />
+                    </button>
+                    <div
+                      v-else
+                      class="block__rating"
+                    >
+                      <div class="block__rating block__rating_star">
+                        <button
+                          @click="showReviewModal(item.rating)"
+                        >
+                          <b-form-rating
+                            v-model="item.rating"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </span>
                 <div
                   class="cards__price"
                   :class="[{'cards__price_gray': item.type === 3}]"
                 >
-                  {{ item.amount }} WUSD
+                  {{ item.amount }} {{ $t('mobile.wusd') }}
                 </div>
               </div>
             </div>
@@ -714,7 +764,6 @@ export default {
     margin: 17px 20px 0 20px;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
   }
   &__priority {
@@ -727,6 +776,16 @@ export default {
       @extend .cards__priority;
       color: #22CC14;
       background: rgba(34, 204, 20, 0.1);
+    }
+    &_urgent {
+      @extend .cards__priority;
+      color: rgba(223, 51, 51, 1);
+      background: rgba(223, 51, 51, 0.1);
+    }
+    &_normal {
+      @extend .cards__priority;
+      color: rgba(232, 210, 13, 1);
+      background: rgba(232, 210, 13, 0.1);
     }
   }
   &__price {
@@ -747,7 +806,7 @@ export default {
   width: 100%;
   &__deactive {
     @extend .btn;
-    background: $black100;
+    background: $black0;
     color: $black400;
     &:hover {
       @extend .btn;
@@ -760,14 +819,15 @@ export default {
 
 .mobile {
   &__header {
-    margin: 10px 0 0 0;
+    padding: 10px 0 10px 0;
+    background-color: #FFFFFF;
   }
   &__body {}
   &__menu {
     border-radius: 6px;
-    background: #E6EAEE;
+    background: $black0;
     padding: 0 10px 0 0;
-    margin: 0 20px 0;
+    margin: 20px 20px 0 20px;
     display: grid;
     grid-gap: 18px;
     grid-template-columns: repeat(4, 1fr);
@@ -1210,5 +1270,44 @@ export default {
     width: 100%;
     max-height: 775px;
   }
+}
+@include _480 {
+  .mobile {
+    &__menu {
+      grid-gap: 6px;
+    }
+  }
+}
+@include _380 {
+  .mobile {
+    &__menu {
+      grid-gap: 2px;
+      border-radius: 6px;
+      background: #F7F8FA;
+      padding: 0;
+      margin: 10px 15px 0 15px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .cards {
+    &__container {
+      max-width: 100%;
+    }
+  }
+  .btn {
+    &__deactive {
+      font-size: 12px;
+      padding: 0;
+      margin: 5px 5px 5px 0;
+      &:hover {
+        margin: 4px 4px 4px -4px;
+      }
+    }
+  }
+}
+.base-btn {
+  height: 32px;
+  padding: 5px;
 }
 </style>

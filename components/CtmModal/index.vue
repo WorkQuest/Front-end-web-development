@@ -33,6 +33,11 @@
       <CtmModalQuestCreated v-if="modals.questCreated === currentModalKey" />
       <CtmModalRaiseViews v-if="modals.raiseViews === currentModalKey" />
       <CtmModalInvitation v-if="modals.invitation === currentModalKey" />
+      <CtmModalApplyForAPension v-if="modals.applyForAPension === currentModalKey" />
+      <CtmModalPensionIsRegistered v-if="modals.pensionIsRegistered === currentModalKey" />
+      <CtmModalMakeDeposit v-if="modals.makeDeposit === currentModalKey" />
+      <CtmModalChangePercent v-if="modals.changePercent === currentModalKey" />
+      <CtmModalOpenADeposit v-if="modals.openADeposit === currentModalKey" />
     </div>
   </transition>
 </template>
@@ -60,6 +65,11 @@ import CtmModalInvitation from './CtmModalInvitation';
 import CtmModalInviteSend from './CtmModalInviteSend';
 import CtmModalQuestCreated from './CtmModalQuestCreated';
 import CtmModalRaiseViews from './CtmModalRaiseViews';
+import CtmModalApplyForAPension from './CtmModalApplyForAPension';
+import CtmModalPensionIsRegistered from './CtmModalPensionIsRegistered';
+import CtmModalMakeDeposit from './CtmModalMakeDeposit';
+import CtmModalChangePercent from './CtmModalChangePercent';
+import CtmModalOpenADeposit from './CtmModalOpenADeposit';
 
 export default {
   name: 'ModalBox',
@@ -85,6 +95,11 @@ export default {
     CtmModalInviteSend,
     CtmModalQuestCreated,
     CtmModalRaiseViews,
+    CtmModalApplyForAPension,
+    CtmModalPensionIsRegistered,
+    CtmModalMakeDeposit,
+    CtmModalChangePercent,
+    CtmModalOpenADeposit,
   },
   data: () => ({
     modals,

@@ -281,7 +281,13 @@
     "city": "City",
     "period": "Period",
     "thanks": "Thanks",
-    "couple": "A couple words"
+    "couple": "A couple words",
+    "depositPercentFromAQuest": "Deposit percent from a quest",
+    "firstDepositAmount": "First deposit amount*",
+    "aboutFirstDeposit": "* First deposit amount is optional. If you do not want to make a deposit, you may leave this field empty",
+    "pensionIsRegistered": "Pension is registered",
+    "currentPercent": "Current percent",
+    "depositAmount": "Deposit amount"
   },
   "ui": {
     "workers": "Workers",
@@ -343,7 +349,6 @@
     "writeYouMessage": "Write you message"
   },
   "settings": {
-    "more": "More",
     "settings": "Settings",
     "addInfo": "Add information about you, profile photo and KYC and level up your rating",
     "alsoRating": "Also rating is depend on your profile data and reviews",
@@ -410,5 +415,82 @@
     "checkedByTime": "CHECKED BY TIME",
     "disabled": "DISABLED",
     "higher": "HIGHER LEVEL"
-  }
+  },
+
+  "mobile": {
+    "priority": {
+      "low": "Low priority",
+      "urgent": "Urgent",
+      "normal": "Normal priority"
+    },
+    "myQuests": "My quests",
+    "youInvited": "You invited",
+    "active": "Active",
+    "performed": "Performed",
+    "youRequested": "You requested",
+    "runtime": "Runtime",
+    "mFromYou": "m from you",
+    "wusd": "WUSD",
+    "inviteYouAQuest": "Invite you a quest:",
+    "balance": "Balance",
+    "deposit": "Deposit",
+    "withdraw": "Withdraw",
+    "transactions": "Transactions",
+    "receive": "Receive",
+    "send": "Send",
+    "notifications": "Notifications",
+    "quests": "Quests",
+    "chat": "Chat",
+    "wallet": "Wallet",
+    "more": "More"
+  },
+  "referral": {
+    "inviteFriendsHead": "Invite friends.",
+    "earnCryptoTogether": "Earn crypto together",
+    "headerSubtitle": "Earn up to 35$ in WQT every time your friends register and make first Quest on Work Quest platform.",
+    "referralReward": "Referral reward",
+    "wqtCount": "{count} WQT",
+    "lastRefReward": "Last ref reward",
+    "plusCount": "+ {count}",
+    "yourRefers": "Your refers",
+    "yourReferralLink": "Your referral link",
+    "howToInviteYourFriends": "How to invite your friends?",
+    "getLink": "Get Link",
+    "registerAndGenerate": "Register and generate referral links with a commission kickback rate.",
+    "inviteFriends": "Invite Friends",
+    "inviteYourFriends": "Invite your friends to register through the referral link and get rewards when they complete first Quest.",
+    "earnCrypto": "Earn Crypto",
+    "everyTimeYourFriends": "Every time your friends make a first Quest, you'll get up to $35 in WQT commission in real time!",
+    "historyOfRewards": "History of rewards",
+    "table": {
+      "name": "Name",
+      "userID": "User ID",
+      "txHash": "Tx hash",
+      "time": "Time",
+      "amount": "Amount",
+      "status": "Status"
+    }
+  },
+ "pension": {
+   "pensionProgram": "Pension program",
+   "applyForAPension": "Apply for a pension",
+   "annualPercent": "annual percent",
+   "optional": "Optional",
+   "optionalFirstDeposit": "optional first deposit",
+   "term": "term",
+   "castomizable": "Castomizable",
+   "depositsFromQuest": "deposits from quest",
+   "howToTakePart": "How to take part in pension program?",
+   "information": "Information",
+   "download": "Download",
+   "pensionBalance": "Pension balance",
+   "makeADeposit": "Make a deposit",
+   "currentPercentFromAQuest": "Current percent from a quest",
+   "changePercent": "Change percent",
+   "everyYear": "every year",
+   "timeRemainsUntilTheEndOfThePeriod": "Time remains until the end of the period",
+   "transactionHistory": "Transaction history",
+   "withdraw": "Withdraw",
+   "prolong": "Prolong"
+ }
 }

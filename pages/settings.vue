@@ -1321,4 +1321,26 @@ export default {
     max-height: 775px;
   }
 }
+
+@include _380 {
+  .option {
+    &__title {
+      padding: 0 10px 0 16px;
+      font-size: 14px;
+    }
+  }
+.mobile {
+  &__option {
+    align-items: center;
+    justify-items: flex-end;
+    height: 64px;
+  }
+}
+  .user {
+    grid-template-columns: 11fr 1fr;
+  }
+  .icons {
+    padding: 16px 0 0 16px;
+  }
+}
 </style>
