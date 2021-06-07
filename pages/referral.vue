@@ -25,11 +25,11 @@
             </div>
             <div class="user_last-reward">
               <div class="user__info">
-                <img
-                  class="ava"
-                  src=""
-                  alt=""
-                >
+                <!--                <img-->
+                <!--                  class="ava"-->
+                <!--                  src=""-->
+                <!--                  alt=""-->
+                <!--                >-->
                 <div class="user__name">
                   Edward Cooper
                 </div>
