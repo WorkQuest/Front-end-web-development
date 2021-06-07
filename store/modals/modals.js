@@ -26,4 +26,6 @@ export default {
   pensionIsRegistered: 'pensionIsRegistered',
   makeDeposit: 'makeDeposit',
   changePercent: 'changePercent',
+  openADeposit: 'openADeposit',
+  depositIsOpened: 'depositIsOpened',
 };

@@ -37,6 +37,8 @@
       <CtmModalPensionIsRegistered v-if="modals.pensionIsRegistered === currentModalKey" />
       <CtmModalMakeDeposit v-if="modals.makeDeposit === currentModalKey" />
       <CtmModalChangePercent v-if="modals.changePercent === currentModalKey" />
+      <CtmModalOpenADeposit v-if="modals.openADeposit === currentModalKey" />
+      <CtmModalDepositIsOpened v-if="modals.depositIsOpened === currentModalKey" />
     </div>
   </transition>
 </template>
@@ -68,6 +70,8 @@ import CtmModalApplyForAPension from './CtmModalApplyForAPension';
 import CtmModalPensionIsRegistered from './CtmModalPensionIsRegistered';
 import CtmModalMakeDeposit from './CtmModalMakeDeposit';
 import CtmModalChangePercent from './CtmModalChangePercent';
+import CtmModalOpenADeposit from './CtmModalOpenADeposit';
+import CtmModalDepositIsOpened from './CtmModalDepositIsOpened';
 
 export default {
   name: 'ModalBox',
@@ -97,6 +101,8 @@ export default {
     CtmModalPensionIsRegistered,
     CtmModalMakeDeposit,
     CtmModalChangePercent,
+    CtmModalOpenADeposit,
+    CtmModalDepositIsOpened,
   },
   data: () => ({
     modals,

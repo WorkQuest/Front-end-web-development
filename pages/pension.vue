@@ -78,55 +78,41 @@
               </div>
             </div>
           </div>
-          <div class="info-block">
+          <div
+            v-if="documents.length"
+            class="info-block"
+          >
             <div class="info-block__name_bold">
-              {{ $t('pension.information') }}
+              Information
             </div>
-            <div class="document">
-              <img
-                class="document__img"
-                src="~/assets/img/ui/pdf.svg"
-                alt=""
+            <div class="info-block__documents">
+              <div
+                v-for="(item, i) in documents"
+                :key="i"
+                class="document"
               >
-              <div class="document__title">
-                <div class="document__name">
-                  Some_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_document.pdf
-                </div>
-                <div class="document__size">
-                  1.2 MB
-                </div>
-              </div>
-              <button class="btn__doc">
-                {{ $t('pension.download') }}
                 <img
-                  class="download"
-                  src="~/assets/img/ui/download.svg"
+                  class="document__img"
+                  src="~/assets/img/ui/pdf.svg"
                   alt=""
                 >
-              </button>
-            </div>
-            <div class="document">
-              <img
-                class="document__img"
-                src="~/assets/img/ui/pdf.svg"
-                alt=""
-              >
-              <div class="document__title">
-                <div class="document__name">
-                  Some_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_documentSome_document.pdf
+                <div class="document__title">
+                  <div class="document__name">
+                    {{ item.name }}
+                  </div>
+                  <div class="document__size">
+                    {{ item.size }}
+                  </div>
                 </div>
-                <div class="document__size">
-                  1.2 MB
-                </div>
+                <button class="btn__doc">
+                  {{ $t('pension.download') }}
+                  <img
+                    class="download"
+                    src="~/assets/img/ui/download.svg"
+                    alt=""
+                  >
+                </button>
               </div>
-              <button class="btn__doc">
-                {{ $t('pension.download') }}
-                <img
-                  class="download"
-                  src="~/assets/img/ui/download.svg"
-                  alt=""
-                >
-              </button>
             </div>
           </div>
         </template>
@@ -322,7 +308,6 @@
           </div>
         </template>
       </div>
-      <div />
     </div>
   </div>
 </template>
@@ -394,6 +379,23 @@ export default {
           thClass: 'cell_head',
         },
       ],
+      documents: [
+        {
+          name: 'Some_document.pdf',
+          size: '1.2 MB',
+          url: '',
+        },
+        {
+          name: 'Some_document2.pdf',
+          size: '2.2 MB',
+          url: '',
+        },
+        {
+          name: 'Some_document3.pdf',
+          size: '34.2 MB',
+          url: '',
+        },
+      ],
     };
   },
   computed: {
@@ -435,10 +437,9 @@ export default {
 
 <style lang="scss" scoped>
 .pension-page {
-  background: linear-gradient(to bottom, #103D7C 320px, #dcdcdc 320px);
+  background: linear-gradient(to bottom, #103D7C 320px, rgba(0, 0, 0, 0) 320px);
   display: flex;
   justify-content: center;
-  height: 100vh;
 
   &__container {
     display: grid;
@@ -681,39 +682,43 @@ export default {
         }
       }
 
-      .document {
-        border: 1px solid #E1E4ED;
-        border-radius: 8px;
-        height: 80px;
-        margin: 0 0 20px 20px;
-        width: calc(100% - 40px);
-        padding: 0 20px;
-        align-items: center;
+      &__documents {
+        padding: 0 20px 20px 20px;
         display: grid;
-        grid-template-columns: 33px auto 220px;
+        gap: 20px;
 
-        &__title {
-          padding: 0 10px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: flex;
+        .document {
+          border: 1px solid #E1E4ED;
+          border-radius: 8px;
+          height: 80px;
+          padding: 0 20px;
           align-items: center;
-        }
+          display: grid;
+          grid-template-columns: 33px auto 220px;
 
-        &__name {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          font-weight: 400;
-          font-size: 16px;
-          padding-right: 10px;
-        }
+          &__title {
+            padding: 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: flex;
+            align-items: center;
+          }
 
-        &__size {
-          font-weight: 400;
-          font-size: 13px;
-          color: #A7AEB9;
+          &__name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 400;
+            font-size: 16px;
+            padding-right: 10px;
+          }
+
+          &__size {
+            font-weight: 400;
+            font-size: 13px;
+            color: #A7AEB9;
+          }
         }
       }
 
