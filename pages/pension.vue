@@ -529,7 +529,7 @@ export default {
 
       &:hover {
         background-color: #0083C71A;
-        border: 0px;
+        border: 0;
       }
 
       &_bl {
@@ -673,7 +673,7 @@ export default {
         .calendar-img {
           grid-area: sd;
           position: absolute;
-          right: 0px;
+          right: 0;
           bottom: 0;
         }
 

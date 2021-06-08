@@ -371,13 +371,6 @@ export default {
   -webkit-box-shadow: inset 0 0 24px rgba(0, 131, 199, 1);
 }
 
-@include _2560 {
-  .mobile {
-    display: none;
-  }
-
-}
-
 @include _1700 {
   .mobile {
     display: none;

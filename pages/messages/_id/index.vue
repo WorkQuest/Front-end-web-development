@@ -248,104 +248,101 @@ export default {
   cursor: pointer;
 }
 
-.icon-more_horizontal::before {
-  content: "\e951";
-  color: $black500;
-  font-size: 26px;
+.icon {
+  &-more_horizontal::before {
+    content: "\e951";
+    color: $black500;
+    font-size: 26px;
+  }
+  &-more {
+    margin: 0 19px 0 0;
+  }
+  &-send::before {
+    content: "\ea6b";
+    font-size: 30px;
+    color: $blue;
+  }
+  &-link::before {
+    content: "\ea20";
+    color: $black700;
+    font-size: 30px;
+  }
+  &-short_left::before {
+    content: "\ea6d";
+    color: $black800;
+    font-size: 26px;
+    cursor: pointer;
+  }
 }
 
-.icon-more {
-  margin: 0 19px 0 0;
-}
-
-.input__wrapper {
-  width: 100%;
-  position: relative;
-  margin: 15px 0;
-  text-align: center;
-}
-
-.input__file {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-}
-
-.input__file-icon-wrapper {
-  height: 60px;
-  width: 60px;
-  margin-right: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-right: 1px solid #fff;
-}
-
-.input__file-button-text {
-  line-height: 1;
-  margin-top: 1px;
-}
-
-.input__file-button {
-  width: 100%;
-  max-width: 40px;
-  height: 40px;
-  background: #F7F8FA;
-  color: #fff;
-  font-size: 1.125rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
-  cursor: pointer;
-  margin: 0 0 0 10px;
-  transition: .2s;
-}
-
-.input__file-button:hover {
-  width: 100%;
-  max-width: 40px;
-  height: 40px;
-  background: #F7F8FA;
-  color: #fff;
-  font-size: 1.125rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
-  cursor: pointer;
-  margin: 0 0 0 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.2);
-  transition: .2s;
+.input {
+  &__wrapper {
+    width: 100%;
+    position: relative;
+    margin: 15px 0;
+    text-align: center;
+  }
+  &__file {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+  }
+  &__file-icon-wrapper {
+    height: 60px;
+    width: 60px;
+    margin-right: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-right: 1px solid #fff;
+  }
+  &__file-button-text {
+    line-height: 1;
+    margin-top: 1px;
+  }
+  &__file-button {
+    width: 100%;
+    max-width: 40px;
+    height: 40px;
+    background: #F7F8FA;
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 0 0 10px;
+    transition: .2s;
+    &:hover {
+      @extend .input__file-button;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    }
+  }
 }
 
 .star {
   &__default {
     display: flex;
   }
-
   &__hover {
     display: none;
   }
-
   &:hover {
     .star {
       &__hover {
         display: flex;
       }
-
       &__default {
         display: none;
       }
-
       &__checked {
         display: none;
       }
@@ -405,25 +402,6 @@ export default {
     color: $black800;
     font-weight: 400;
   }
-}
-
-.icon-send::before {
-  content: "\ea6b";
-  font-size: 30px;
-  color: $blue;
-}
-
-.icon-link::before {
-  content: "\ea20";
-  color: $black700;
-  font-size: 30px;
-}
-
-.icon-short_left::before {
-  content: "\ea6d";
-  color: $black800;
-  font-size: 26px;
-  cursor: pointer;
 }
 
 .input {
@@ -513,17 +491,10 @@ export default {
       max-height: 40px;
       margin: 0 11px 0 0;
       transition: .2s;
-    }
-    &_spend:hover {
-      background-color: $black0;
-      border-radius: 6px;
-      width: 100%;
-      height: 100%;
-      max-width:40px;
-      max-height: 40px;
-      margin: 0 11px 0 0;
-      box-shadow: 0 0 6px rgba(0,0,0,0.2);
-      transition: .2s;
+      &:hover {
+        @extend .chat__btn_spend;
+        box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      }
     }
     &_add {
       background-color: $black0;
@@ -534,17 +505,10 @@ export default {
       max-height: 40px;
       margin: 0 -11px 0 0;
       transition: .2s;
-    }
-    &_add:hover {
-      background-color: $black0;
-      border-radius: 6px;
-      width: 100%;
-      height: 100%;
-      max-width:40px;
-      max-height: 40px;
-      margin: 0 -11px 0 0;
-      box-shadow: 0 0 6px rgba(0,0,0,0.2);
-      transition: .2s;
+      &:hover {
+        @extend .chat__btn_add;
+        box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      }
     }
   }
   &__panel {
@@ -556,7 +520,7 @@ export default {
     align-items: center;
     justify-items: center;
     border: 1px solid #E9EDF2;
-    border-radius: 0px 0px 6px 6px;
+    border-radius: 0 0 6px 6px;
   }
   &__name-container {
     display: flex;
@@ -594,7 +558,6 @@ export default {
     width: 100%;
     max-height: 722px;
   }
-  &__img-container {}
   &__img {
     width: 100%;
     height: 100%;

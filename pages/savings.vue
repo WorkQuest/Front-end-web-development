@@ -500,7 +500,7 @@ export default {
 
       &:hover {
         background-color: #0083C71A;
-        border: 0px;
+        border: 0;
       }
 
       &_bl {
@@ -702,7 +702,6 @@ export default {
           background-color: #F7F8FA;
           display: grid;
           border-radius: 6px;
-          display: grid;
           box-sizing: border-box;
           padding: 20px;
           margin: 0 20px 20px 20px;

@@ -597,12 +597,6 @@ export default {
     }
   }
 }
-@include _2560 {
-  .mobile {
-    display: none;
-  }
-
-}
 
 @include _1700 {
   .mobile {

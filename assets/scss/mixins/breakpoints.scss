@@ -1,9 +1,3 @@
-@mixin _2560 {
-  @media (max-width: 2560px) {
-    @content;
-  }
-}
-
 @mixin _1700 {
   @media (max-width: 1700px) {
     @content;

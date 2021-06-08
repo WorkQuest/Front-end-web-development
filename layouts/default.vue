@@ -1129,11 +1129,6 @@ export default {
     grid-gap: 20px;
   }
 }
-@include _2560 {
-  .mobile {
-    display: none;
-  }
-}
 @include _1700 {
   .mobile {
     display: none;
