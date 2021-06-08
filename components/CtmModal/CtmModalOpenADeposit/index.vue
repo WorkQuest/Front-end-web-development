@@ -65,6 +65,7 @@ export default {
       this.CloseModal();
     },
     showDepositIsOpenedModal() {
+      console.log();
       this.ShowModal({
         key: modals.status,
         title: this.$t('modals.depositIsOpened'),
