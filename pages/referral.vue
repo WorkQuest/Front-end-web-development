@@ -76,7 +76,7 @@
             </div>
             <div class="info-block__link">
               <div class="address">
-                {{ this.referLink }}
+                {{ referLink }}
               </div>
               <button
                 type="button"
@@ -142,7 +142,8 @@
                     {{ el.item.userName }}
                   </div>
                 </div>
-              </template><template #cell(userID)="el">
+              </template>
+              <template #cell(userID)="el">
                 <div class="user__value_gray">
                   {{ el.item.userID }}
                 </div>
@@ -233,10 +234,10 @@ export default {
 
 <style lang="scss" scoped>
 .referral-page {
-  background: linear-gradient(to bottom, #103D7C 370px, #dcdcdc 370px);
+  background: linear-gradient(to bottom, #103D7C 370px, rgba(0, 0, 0, 0) 370px);
   display: flex;
   justify-content: center;
-  height: 100vh;
+
   &__container {
     display: grid;
     grid-template-rows: 225px max-content;

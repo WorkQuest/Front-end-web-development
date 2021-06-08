@@ -437,10 +437,9 @@ export default {
 
 <style lang="scss" scoped>
 .pension-page {
-  background: linear-gradient(to bottom, #103D7C 320px, #dcdcdc 320px);
+  background: linear-gradient(to bottom, #103D7C 320px, rgba(0, 0, 0, 0) 320px);
   display: flex;
   justify-content: center;
-  height: 100vh;
 
   &__container {
     display: grid;

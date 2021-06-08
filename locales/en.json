@@ -287,7 +287,10 @@
     "aboutFirstDeposit": "* First deposit amount is optional. If you do not want to make a deposit, you may leave this field empty",
     "pensionIsRegistered": "Pension is registered",
     "currentPercent": "Current percent",
-    "depositAmount": "Deposit amount"
+    "depositAmount": "Deposit amount",
+    "lockedSavings": "Locked savings",
+    "durationDays": "Duration (days)",
+    "depositIsOpened": "Deposit is opened"
   },
   "ui": {
     "workers": "Workers",
@@ -497,5 +500,19 @@
    "transactionHistory": "Transaction history",
    "withdraw": "Withdraw",
    "prolong": "Prolong"
- }
+ },
+  "saving": {
+    "workQuestSavings": "WorkQuest Savings",
+    "lendAndEarn": "Lend & Earn",
+    "conditions": "Conditions",
+    "maxMinSum": "Max/min sum",
+    "depositsAndWithdrawal": "Deposits and withdrawal",
+    "term": "Term",
+    "annualizedInterestRate": "Annualized interest rate",
+    "openADeposit": "Open a deposit",
+    "faq": "FAQ",
+    "information": "Information",
+    "historyOfDeposits": "History of deposits",
+    "depositAmount": "Deposit amount"
+  }
 }

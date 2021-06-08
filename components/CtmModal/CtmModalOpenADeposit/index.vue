@@ -1,14 +1,14 @@
 <template>
   <ctm-modal-box
     class="messageSend"
-    title="Open a deposit"
+    :title="$t('saving.openADeposit')"
   >
     <div class="ctm-modal__content">
       <div class="ctm-modal__content-field">
         <label
           for="depositPercent_input"
           class="ctm-modal__label"
-        >Locked savings</label>
+        >{{ $t("modals.lockedSavings") }}</label>
         <input
           id="depositPercent_input"
           class="input_grey"
@@ -19,7 +19,7 @@
         <label
           for="amount_input"
           class="ctm-modal__label"
-        >Duration (days)</label>
+        >{{ $t("modals.durationDays") }}</label>
         <input
           id="amount_input"
           class="input_grey"
@@ -36,7 +36,7 @@
           </base-btn>
           <base-btn
             class="btn_bl"
-            @click="showPensionIsRegisteredModal()"
+            @click="showDepositIsOpenedModal()"
           >
             {{ $t('meta.submit') }}
           </base-btn>
@@ -64,9 +64,9 @@ export default {
     hide() {
       this.CloseModal();
     },
-    showPensionIsRegisteredModal() {
+    showDepositIsOpenedModal() {
       this.ShowModal({
-        key: modals.pensionIsRegistered,
+        key: modals.depositIsOpened,
       });
     },
   },
