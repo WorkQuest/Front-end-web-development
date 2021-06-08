@@ -1,0 +1,30 @@
+.dropzone-custom-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.subtitle {
+  color: #314b5f;
+}
+
+.dz-filename {
+  display: none;
+}
+
+.dz-size {
+  display: none;
+}
+
+.dz-remove {
+  background: #DF3333;
+  border-radius: 3px;
+  border: 1px solid $black800;
+  position: absolute;
+}
+
+.dz-image {
+  border-radius: 6px;
+}

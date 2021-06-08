@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+.nuxt
+dist
+backup
+.idea
+.env
+/package-lock.json

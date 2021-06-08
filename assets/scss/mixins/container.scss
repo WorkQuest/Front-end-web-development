@@ -1,0 +1,19 @@
+@mixin main {
+  display: flex;
+  justify-content: center;
+  &__body {
+    max-width: 1180px;
+    width: 100%;
+    height: 100%;
+  }
+}
+@mixin main-white {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  &__body {
+    max-width: 1180px;
+    width: 100%;
+    height: 100%;
+  }
+}

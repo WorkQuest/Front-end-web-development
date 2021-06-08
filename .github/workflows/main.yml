@@ -1,0 +1,72 @@
+name: Node-CI
+
+on:
+  push:
+    branches: [ master, develop ]
+
+jobs:
+  build-prod:
+    if: github.ref == 'refs/heads/master'
+    environment: production
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Copy code files to container
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      #    - name: Export env variable
+      #      run: export GMAPKEY=${{ secrets.GMAPKEY }}
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Run generate static task
+        run: GMAPKEY=${{ secrets.GMAPKEY }} BASE_URL=${{ secrets.BASE_URL }} npm run generate
+
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.1.4
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+
+  build-develop:
+    if: github.ref == 'refs/heads/develop'
+    environment: develop
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Copy code files to container
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      #    - name: Export env variable
+      #      run: export GMAPKEY=${{ secrets.GMAPKEY }}
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Run generate static task
+        run: GMAPKEY=${{ secrets.GMAPKEY }} BASE_URL=${{ secrets.BASE_URL }} npm run generate
+
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.1.4
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}

@@ -1,0 +1,484 @@
+{
+  "invite": {
+    "title": "Invited"
+  },
+  "response": {
+    "title": "Responded"
+  },
+  "active": {
+    "title": "Responded"
+  },
+  "company": {
+    "from": "from"
+  },
+  "performed": {
+    "title": "Performed"
+  },
+  "btn": {
+    "agree": "Agree",
+    "goToChat": "Go to chat",
+    "dispute":"Open dispute",
+    "responded": "Respond send"
+  },
+
+  "distance" : {
+    "m": "m"
+  },
+
+  "messages": {
+    "alpha": "The {_field_} field may only contain alphabetic characters",
+    "alpha_num": "The {_field_} field may only contain alpha-numeric characters",
+    "alpha_dash": "The {_field_} field may contain alpha-numeric characters as well as dashes and underscores",
+    "alpha_spaces": "The {_field_} field may only contain alphabetic characters as well as spaces",
+    "between": "The {_field_} field must be between {min} and {max}",
+    "confirmed": "The {_field_} field confirmation does not match",
+    "digits": "The {_field_} field must be numeric and exactly contain {length} digits",
+    "dimensions": "The {_field_} field must be {width} pixels by {height} pixels",
+    "email": "The {_field_} field must be a valid email",
+    "excluded": "The {_field_} field is not a valid value",
+    "ext": "The {_field_} field is not a valid file",
+    "image": "The {_field_} field must be an image",
+    "integer": "The {_field_} field must be an integer",
+    "length": "The {_field_} field must be {length} long",
+    "max_value": "The {_field_} field must be {max} or less",
+    "max": "The {_field_} field may not be greater than {length} characters",
+    "mimes": "The {_field_} field must have a valid file type",
+    "min_value": "The {_field_} field must be {min} or more",
+    "min": "The {_field_} field must be at least {length} characters",
+    "numeric": "The {_field_} field may only contain numeric characters",
+    "oneOf": "The {_field_} field is not a valid value",
+    "regex": "The {_field_} field format is invalid",
+    "required_if": "The {_field_} field is required",
+    "required": "The {_field_} field is required",
+    "size": "The {_field_} field size must be less than {size}KB",
+    "decimal": "The {_field_} field must contain only decimal values"
+  },
+  "labels": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "mail": "Mail",
+    "password": "Enter password"
+  },
+  "placeholders": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "mail": "your@mail.com",
+    "email": "Email address",
+    "password": "•••••••"
+  },
+  "about": {
+    "contact": "Contact us",
+    "content": {
+      "title": "About us",
+      "text": "Work Quest is a social project based on the blockchain technology for finding work and solving any tasks from the employer's side in quest mode. Are you looking for a job? A work quest will help you find a quest next to you and your city. Do you need workers to carry out the goals? Just create a quest on the site of the work quest. The service assumes the warranty obligations for performing quests. Employer funds are kept with us , if the employee gives a confirmation of the performance of work, he receives a deposit of funds on his account. The system of ratings, reviews and a list of completed quests will help to easily find honest people and the best specialists.\n\n          Our goal is to simplify the communication between the employer and the employee, to help employ millions of people, to improve their financial situation, to solve the lifelong problem of finding reliable professionals in all sectors to create a progressive digital economy built on the principles of trust, mutual respect and the well-being of all its participants."
+    }
+  },
+  "registration": {
+    "edit": "Edit",
+    "registration": "Registration",
+    "emailConfirm": "A letter has been sent to your email address",
+    "emailConfirmTitle": "Check your email"
+  },
+  "login": {
+    "signIn": "Sign In",
+    "account": "Haven’t account?",
+    "remember": "Remember me",
+    "forgot": "Forgot password?",
+    "loginWith": "Login with your \nsocial media account",
+    "create": "Create account"
+  },
+  "profile": {
+    "active": "active proposals",
+    "radius": "in your radius",
+    "lead": "Lead time",
+    "proposalLocation": "Proposal location \naccording to your \ncurrent location",
+    "proposalStatus": "Proposal status",
+    "urgently": "URGENTLY",
+    "details": "View details",
+    "available": "Available",
+    "viewProfile": "View \nprofile",
+    "invite": "INVITE QUESTOR",
+    "slogan": "Create work proposal",
+    "add": "Add all the information and publication time  to find the right",
+    "create": "Create",
+    "sidebar": {
+      "filter": "All Quests filter",
+      "choose": "(Choose simple or \nspecialized category)",
+      "quests": "Quests",
+      "specialized": "SPECIALIZED QUESTS",
+      "find": "FIND A JOB"
+    }
+  },
+  "meta": {
+    "ok": "Ok",
+    "send": "Send",
+    "save": "Save",
+    "reset": "Reset",
+    "fromYou": "from you",
+    "details": "View details",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "showAllReviews": "Show all reviews"
+  },
+  "priority": {
+    "title": "Priority",
+    "all": "All priority",
+    "low": "Low priority",
+    "normal": "Normal priority",
+    "urgent": "Urgent"
+  },
+  "signIn": {
+    "title": "Sign in",
+    "account": "Haven’t account?",
+    "regs": "Registration",
+    "login": "Login",
+    "remember": "Remember me",
+    "forgot": "Forgot password",
+    "or": "Or",
+    "loginWith": "Login with"
+  },
+  "signUp": {
+    "title": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "auth": "Authorization",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Repeat password",
+    "create": "Create account"
+  },
+  "forgot": {
+    "title": "Forgot password?",
+    "desc": "We will send you instructions on how to reset your password."
+  },
+  "restore": {
+    "title": "Restore password",
+    "modal": "Password changed"
+  },
+  "role": {
+    "employer": "Employer",
+    "worker": "Worker",
+    "enter": "Enter",
+    "choose": "Choose your role",
+    "employerWant": "I want to make a tasks and looking for a workers",
+    "workerWant": "I want to search a tasks and working on freelance",
+    "chooseThis": "Choose this role"
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor",
+    "agree": "I agree with",
+    "privacyLink": "Privacy policy",
+    "termsLink": "Terms & Conditions",
+    "amlLink": "AML & CTF Policy"
+  },
+  "layout": {
+    "create": "Create a quest",
+    "links": {
+      "terms": "\t· Terms and conditions",
+      "privacy": "\t· Privacy policy"
+    }
+  },
+  "skills": {
+    "title": "Skills"
+  },
+  "quests": {
+    "readCompletely": "Read completely",
+    "questBig": "Quest",
+    "fromBig": "From",
+    "fromYou": "from you",
+    "reviews": "reviews",
+    "reviewsBig": "Reviews",
+    "MyQuests": "My quests",
+    "activeQuest": "Active quest",
+    "createANewQuest": "Create a new quest",
+    "proposal": "Proposal",
+    "category": "Category",
+    "address": "Address",
+    "runtime": "Runtime",
+    "uploadQuestMaterials": "Upload quest materials",
+    "price": "Price",
+    "typeOfAd": "Type of advertisement",
+    "free": "Free",
+    "paid": "Paid",
+    "priceOfAClick": "Price of a click",
+    "city": "City",
+    "period": "Period",
+    "EstimatedPayment": "Estimated payment:",
+    "createAQuest": "Create a quest",
+    "activeQuests": "Active quests",
+    "completedQuests": "Completed quests",
+    "oneTime": "One time",
+    "fullTime": "Full time",
+    "uploadAImagesOrVideos": "Upload a images or videos",
+    "averageRating": "Average rating",
+    "showAllActiveQuests": "Show all active quests",
+    "performanceTimer": "Performance timer",
+    "questAmount": "quests",
+    "otherQuestsSpec": "Other quests for the specialization",
+    "questMaterials": "Quest materials",
+    "searchResults": "Search results",
+    "type": "Type of job",
+    "time": "Added time",
+    "priority": {
+      "all": "All priority",
+      "low": "Low",
+      "normal": "Normal",
+      "urgent": "Urgent"
+    },
+    "ui": {
+      "showMap": "Show map",
+      "search": "City / Street / Place"
+    }
+  },
+  "modals": {
+    "amount": "Amount",
+    "messageSend": "Message Send",
+    "questAgreed": "Quest Agreed",
+    "requestSend": "Request sent",
+    "sendARequest": "Send a request",
+    "message": "Message",
+    "bodyMessage": "Hello",
+    "areYouSure": "Are You Sure?",
+    "transactionSend": "Transaction send",
+    "cardHasBeenAdded": "Card has been added",
+    "deposit": "Deposit",
+    "numberOfCard": "Number of card",
+    "date": "Date",
+    "cvv": "CVV",
+    "cardholderName": "Cardholder name",
+    "addAnotherCard": "Add another card",
+    "widthraw": "Widthraw",
+    "addCard": "Add Card",
+    "inviteSend": "Invite sent",
+    "questCreated": "Quest Created",
+    "invitation": "Invitation",
+    "chooseQuest": "Choose Quest",
+    "raiseViews": "Raise views",
+    "priceOfAClick": "Price of a click",
+    "city": "City",
+    "period": "Period",
+    "thanks": "Thanks",
+    "couple": "A couple words",
+    "depositPercentFromAQuest": "Deposit percent from a quest",
+    "firstDepositAmount": "First deposit amount*",
+    "aboutFirstDeposit": "* First deposit amount is optional. If you do not want to make a deposit, you may leave this field empty",
+    "pensionIsRegistered": "Pension is registered",
+    "currentPercent": "Current percent",
+    "depositAmount": "Deposit amount",
+    "lockedSavings": "Locked savings",
+    "durationDays": "Duration (days)",
+    "depositIsOpened": "Deposit is opened"
+  },
+  "ui": {
+    "workers": "Workers",
+    "wallet": "Wallet",
+    "myQuests": "My quests",
+    "quests": "Quests",
+    "profile": {
+      "myProfile": "My profile",
+      "settings": "Settings",
+      "disputes": "Disputes",
+      "instruments": "Instruments",
+      "logout": "Logout"
+    },
+    "locals": {
+      "en": "EN",
+      "ru": "RU"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "invite": "Invite you a quest"
+    },
+    "menu": {
+      "pension": "Pension program",
+      "referral": "Referral program",
+      "p2p": "P2P insurance",
+      "savings": "Savings product",
+      "crediting": "Crediting",
+      "mining": "Liquidity mining",
+      "menu": "Menu"
+    },
+    "footer": {
+      "rights": "All rights reserved"
+    }
+  },
+  "wallet": {
+    "wallet": "Wallet",
+    "balance": "Balance",
+    "deposit": "Deposit",
+    "withdraw": "Withdraw",
+    "addCardProposal": "Add your own card for easy withdrawal",
+    "addCard": "Add card",
+    "table": {
+      "trx": "Transactions",
+      "txHash": "Tx hash",
+      "status": "Status",
+      "block": "Block",
+      "timestamp": "Timestamp",
+      "transferred": "Transferred",
+      "value": "Value",
+      "trxFee": "Transaction fee"
+    }
+  },
+  "chat": {
+    "messages": "Messages",
+    "chat": "Chat",
+    "quest": "Quest:",
+    "you": "You:",
+    "invitedYou": "invited you to a quest",
+    "writeYouMessage": "Write you message"
+  },
+  "settings": {
+    "settings": "Settings",
+    "addInfo": "Add information about you, profile photo and KYC and level up your rating",
+    "alsoRating": "Also rating is depend on your profile data and reviews",
+    "dontShow": "Don’t show again",
+    "profileInfo": "Profile information",
+    "nameInput": "Rosalia",
+    "lastNameInput": "Vance",
+    "addressInput": "Moscow, Lenina street, 2",
+    "telInput": "+ 7 989 989 9823",
+    "socialInput": "@useruser",
+    "save": "Save",
+    "skills": "Skills:",
+    "whoCanSee": "Who can see my profile?",
+    "allUsers": "All registered users",
+    "allInternet": "All people in internet",
+    "onlyWhenSubmittedWork": "Only when submited work proposal",
+    "urgentProposals": "Only urgent proposals",
+    "onlyImplementation": "Only implementation",
+    "onlyReady": "Only ready for execution",
+    "allRegistered": "All registered users",
+    "changePass": "Change password",
+    "change": "Change",
+    "enableTwoStepAuth": "Enable Two-Step authentication",
+    "enable": "Enable",
+    "smsVerification": "Profile SMS verification",
+    "amazon": "Amazon",
+    "ceo": "CEO",
+    "amazon_com": "amazon.com",
+    "filterAllWorkProposals": "Filter all work proposals",
+    "changeRole": "Change role"
+  },
+  "disputes": {
+    "disputes": "Disputes",
+    "dispute": "Dispute №:",
+    "quest": "Quest:",
+    "employer": "Employer:",
+    "questSalary": "Quest salary:",
+    "status": "Status:",
+    "decision": "Decision:"
+  },
+  "workers": {
+    "searchQuests": "Search quests",
+    "topWorkers": "Top workers",
+    "price": "Price",
+    "addedTime": "Added time",
+    "quests": "Quests",
+    "urgent": "Urgent",
+    "specialized": "Specialized",
+    "typeOfJob": "Type of job",
+    "specializations": "Specializations",
+    "aboutMe": "About me"
+  },
+  "levels": {
+    "reliableEmp": "RELIABLE EMP.",
+    "checkedByTime": "CHECKED BY TIME",
+    "disabled": "DISABLED"
+  },
+  "referral": {
+    "inviteFriendsHead": "Invite friends.",
+    "earnCryptoTogether": "Earn crypto together",
+    "headerSubtitle": "Earn up to 35$ in WQT every time your friends register and make first Quest on Work Quest platform.",
+    "referralReward": "Referral reward",
+    "wqtCount": "{count} WQT",
+    "lastRefReward": "Last ref reward",
+    "plusCount": "+ {count}",
+    "yourRefers": "Your refers",
+    "yourReferralLink": "Your referral link",
+    "howToInviteYourFriends": "How to invite your friends?",
+    "getLink": "Get Link",
+    "registerAndGenerate": "Register and generate referral links with a commission kickback rate.",
+    "inviteFriends": "Invite Friends",
+    "inviteYourFriends": "Invite your friends to register through the referral link and get rewards when they complete first Quest.",
+    "earnCrypto": "Earn Crypto",
+    "everyTimeYourFriends": "Every time your friends make a first Quest, you'll get up to $35 in WQT commission in real time!",
+    "historyOfRewards": "History of rewards",
+    "table": {
+      "name": "Name",
+      "userID": "User ID",
+      "txHash": "Tx hash",
+      "time": "Time",
+      "amount": "Amount",
+      "status": "Status"
+    }
+  },
+ "pension": {
+   "pensionProgram": "Pension program",
+   "applyForAPension": "Apply for a pension",
+   "annualPercent": "annual percent",
+   "optional": "Optional",
+   "optionalFirstDeposit": "optional first deposit",
+   "term": "term",
+   "castomizable": "Castomizable",
+   "depositsFromQuest": "deposits from quest",
+   "howToTakePart": "How to take part in pension program?",
+   "information": "Information",
+   "download": "Download",
+   "pensionBalance": "Pension balance",
+   "makeADeposit": "Make a deposit",
+   "currentPercentFromAQuest": "Current percent from a quest",
+   "changePercent": "Change percent",
+   "everyYear": "every year",
+   "timeRemainsUntilTheEndOfThePeriod": "Time remains until the end of the period",
+   "transactionHistory": "Transaction history",
+   "withdraw": "Withdraw",
+   "prolong": "Prolong",
+   "currentPensionBalance": "Current pension balance"
+ },
+  "saving": {
+    "workQuestSavings": "WorkQuest Savings",
+    "lendAndEarn": "Lend & Earn",
+    "conditions": "Conditions",
+    "maxMinSum": "Max/min sum",
+    "depositsAndWithdrawal": "Deposits and withdrawal",
+    "term": "Term",
+    "annualizedInterestRate": "Annualized interest rate",
+    "openADeposit": "Open a deposit",
+    "faq": "FAQ",
+    "information": "Information",
+    "historyOfDeposits": "History of deposits",
+    "depositAmount": "Deposit amount",
+    "guestPlug": "??",
+    "possiblePlug": "Possible",
+    "yearPlug": "{count} year",
+    "date": "2 years 52 days",
+    "faq1": "What are Locked Savings? Committed to holding your crypto?",
+    "faq2": "What happens to my funds on the day I subscribe to a Locked Savings product?",
+    "ans2": "On the day of subscription, WorkQuest Savings will deduct the funds for subscription from your WUSD wallet.",
+    "faq3": "What happens to my funds on the value date of a Locked Savings product?",
+    "faq4": "What happens to my funds on the redemption date of a Locked Savings product?",
+    "faq5": "How is the average annual return (APR) calculated?"
+  },
+  "general": {
+    "fullPlug": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean id nunc ac arcu viverra. Aliquet egestas suspendisse id pellentesque lacus. Ut accumsan posuere viverra hendrerit. Lacus volutpat id aliquam accumsan cras. Magna consectetur id sollicitudin sed eget nisl nunc. Quis sagittis sodales volutpat sed.",
+    "midPlug": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim",
+    "smallPlug": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ac neque cum posuere in. Semper arcu purus eget faucibus.",
+    "wusdCount": "{count} WUSD",
+    "plusPercents": "+ {count}%",
+    "percents": "{count}%",
+    "days": "{count} days",
+    "docName": "Some_document.pdf",
+    "mb": "MB",
+    "table": {
+      "userName": "Edward Cooper",
+      "userId": "455dad66544ss",
+      "txHash": "sf998s...ss877d",
+      "time": "Feb 1, 2021",
+      "status": "Success"
+    },
+    "years": "{count} years"
+  }
+}
