@@ -55,7 +55,7 @@
             src="~assets/img/app/logo.svg"
             alt="WorkQuest"
           >
-          <span>{{ $t('signIn.workQuest') }}</span>
+          <span>WorkQuest</span>
         </div>
         <div class="template__content">
           <nuxt />
@@ -63,7 +63,10 @@
       </div>
       <div class="template__right">
         <div class="template__slogan">
-          <span>{{ $t('signIn.makingMoneyIsFast') }}</span>
+          <span>Making
+            money is fast.
+            When your
+            work is quest.</span>
         </div>
         <img
           class="template__long"

@@ -530,7 +530,7 @@ export default {
         },
         {
           title: this.$t('ui.menu.savings'),
-          path: '/wallet',
+          path: '/savings',
         },
         {
           title: this.$t('ui.menu.crediting'),

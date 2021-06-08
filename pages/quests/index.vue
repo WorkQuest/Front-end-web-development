@@ -260,7 +260,9 @@
         v-for="(card, i) in cards"
         :key="i"
       >
-        <div class="quest-cards">
+        <div
+          class="quest-cards"
+        >
           <div class="quest-cards__header">
             <div class="avatar__container">
               <img
@@ -301,7 +303,10 @@
             </div>
             <div class="distance__distance">{{ card.distance }}m from you</div>
           </div>
-          <div class="quest-cards__text">
+          <div
+            class="quest-cards__text"
+            @click="showDetails()"
+          >
             <div class="quest-cards__title">{{ card.theme }}</div>
             <div class="quest-cards__description"> {{ card.desc }}</div>
           </div>
