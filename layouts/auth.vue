@@ -113,7 +113,6 @@ export default {
     white-space: pre-line;
   }
 }
-
 @include _1300 {
   .template {
     &__slogan {

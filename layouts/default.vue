@@ -19,7 +19,7 @@
                 <span>WorkQuest</span>
               </div>
               <div
-                v-if="userData.role === 'employer'"
+                v-if="userRole === 'employer'"
                 class="header__links"
               >
                 <nuxt-link
@@ -83,7 +83,7 @@
                 </button>
               </div>
               <div
-                v-if="userData.role === 'worker'"
+                v-if="userRole === 'worker'"
                 class="header__links"
               >
                 <nuxt-link
@@ -316,13 +316,13 @@
                           Samantha Sparks
                         </div>
                         <div
-                          v-if="userData.role === 'employer'"
+                          v-if="userRole === 'employer'"
                           class="profile__text profile__text_blue"
                         >
                           {{ $t('role.employer') }}
                         </div>
                         <div
-                          v-if="userData.role === 'worker'"
+                          v-if="userRole === 'worker'"
                           class="profile__text profile__text_green"
                         >
                           {{ $t('role.worker') }}
@@ -350,7 +350,7 @@
                 </transition>
               </button>
               <base-btn
-                v-if="userData.role === 'employer'"
+                v-if="userRole === 'employer'"
                 class="header__btn"
                 @click="createNewQuest()"
               >
@@ -362,6 +362,9 @@
         <div class="template__main">
           <nuxt />
         </div>
+        <section class="mobile">
+          <MobileMenu />
+        </section>
         <div class="template__footer">
           <div class="footer">
             <div class="footer__body">
@@ -469,10 +472,14 @@
 <script>
 import { mapGetters } from 'vuex';
 import ClickOutside from 'vue-click-outside';
+import MobileMenu from '../components/app/MobileMenu/index.vue';
 
 export default {
   name: 'DefaultLayout',
   middleware: 'auth',
+  components: {
+    MobileMenu,
+  },
   directives: {
     ClickOutside,
   },
@@ -489,6 +496,7 @@ export default {
     ...mapGetters({
       isLoading: 'main/getIsLoading',
       userData: 'user/getUserData',
+      userRole: 'user/getUserRole',
     }),
     profileLinks() {
       return [
@@ -1119,6 +1127,63 @@ export default {
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-gap: 20px;
+  }
+}
+@include _2560 {
+  .mobile {
+    display: none;
+  }
+}
+@include _1700 {
+  .mobile {
+    display: none;
+  }
+}
+@include _1600 {
+  .mobile {
+    display: none;
+  }
+}
+@include _1500 {
+  .mobile {
+    display: none;
+  }
+}
+@include _1300 {
+  .mobile {
+    display: none;
+  }
+}
+@include _1199 {
+  .header {
+    display: flex;
+    &__body {
+      margin: 0 20px 0 20px;
+    }
+  }
+  .mobile {
+    display: none;
+  }
+  .footer {
+    &__body {
+      max-width: 1180px;
+      margin: 0 20px 0 20px;
+    }
+    &__bottom {
+      max-width: 1020px;
+    }
+  }
+}
+@include _991 {
+  .header {
+      display: none;
+  }
+  .mobile {
+    padding: 50px 0 0 0;
+    display: grid;
+  }
+  .footer {
+      display: none;
   }
 }
 </style>

@@ -302,6 +302,19 @@
                   </div>
                 </div>
               </span>
+              <!-- send a request -->
+              <span v-if="userRole === 'worker'">
+                <div
+                  v-if="infoData.mode === 5"
+                  class="buttons__wrapper"
+                >
+                  <div class="btn__wrapper">
+                    <base-btn @click="showMessageModal()">
+                      {{ $t('btn.sendARequest') }}
+                    </base-btn>
+                  </div>
+                </div>
+              </span>
               <!-- activeQuest -->
               <span v-if="userRole === 'worker'">
                 <div
@@ -546,7 +559,7 @@ export default {
         code: 1,
       },
       infoData: {
-        mode: 1,
+        mode: 5,
         date: '15:30:20',
         hasRequest: 'false',
       },

@@ -2,34 +2,37 @@
   <div>
     <span v-if="userRole === 'employer'">
       <span v-if="info.mode !== 1">
-        <span v-if="info.mode !== 3">
-          <div>
-            <div
-              class="info"
-              :class="infoClass"
-            >
-              <div class="info__body">
-                <div class="info__left">
-                  <div
-                    class="info__text info__text_white"
-                  >
-                    <div v-if="info.mode === 2">
-                      {{ $t('quests.activeQuest') }}
-                    </div>
-                    <div v-if="info.mode === 4">
-                      {{ $t('performed.title') }}
+        <span v-if="info.mode !== 5">
+          <span v-if="info.mode !== 3">
+            <div>
+              <div
+                class="info"
+                :class="infoClass"
+              >
+                <div class="info__body">
+                  <div class="info__left">
+                    <div
+                      class="info__text info__text_white"
+                    >
+                      <div v-if="info.mode === 2">
+                        {{ $t('quests.activeQuest') }}
+                      </div>
+                      <div v-if="info.mode === 4">
+                        {{ $t('performed.title') }}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </span>
         </span>
       </span>
     </span>
     <span v-if="userRole === 'worker'">
       <div>
         <div
+          v-if="info.mode !== 5"
           class="info"
           :class="infoClass"
         >
@@ -51,6 +54,7 @@
                 <div v-if="info.mode === 4">
                   {{ $t('performed.title') }}
                 </div>
+                <div v-if="info.mode === 5" />
               </div>
             </div>
             <div class="info__right">

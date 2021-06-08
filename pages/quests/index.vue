@@ -1,239 +1,326 @@
 <template>
   <div class="quests">
-    <div class="quests__top">
-      <transition name="fade-fast">
-        <GMap
-          v-if="isShowMap"
-          ref="gMap"
-          class="quests__map"
-          language="en"
-          :center="{lat: locations[0].lat, lng: locations[0].lng}"
-          :zoom="6"
-        />
-      </transition>
-      <div class="quests__search">
-        <div class="search">
-          <div class="search__toggle">
-            <base-checkbox
-              v-model="isShowMap"
-              name="map"
-              :label="$t('quests.ui.showMap')"
-            />
-          </div>
-          <div class="search__inputs">
-            <base-field
-              v-model="search"
-              is-search
-              class="search__input"
-              :placeholder="$t('quests.ui.search')"
-              :mode="'icon'"
-            />
-          </div>
-          <div class="search__dd">
-            <base-dd
-              v-model="distanceIndex"
-              :items="distance"
-            />
-          </div>
-          <div class="search__actions">
-            <base-btn class="search__btn">
-              Search quests
-            </base-btn>
+    <section class="pc">
+      <div class="quests__top">
+        <transition name="fade-fast">
+          <GMap
+            v-if="isShowMap"
+            ref="gMap"
+            class="quests__map"
+            language="en"
+            :center="{lat: locations[0].lat, lng: locations[0].lng}"
+            :zoom="6"
+          />
+        </transition>
+        <div class="quests__search">
+          <div class="search">
+            <div class="search__toggle">
+              <base-checkbox
+                v-model="isShowMap"
+                name="map"
+                :label="$t('quests.ui.showMap')"
+              />
+            </div>
+            <div class="search__inputs">
+              <base-field
+                v-model="search"
+                is-search
+                class="search__input"
+                :placeholder="$t('quests.ui.search')"
+                :mode="'icon'"
+              />
+            </div>
+            <div class="search__dd">
+              <base-dd
+                v-model="distanceIndex"
+                :items="distance"
+              />
+            </div>
+            <div class="search__actions">
+              <base-btn class="search__btn">
+                Search quests
+              </base-btn>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="quests__content">
-      <div
-        class="quests__body"
-        :class="{'quests__body_wrap': !isShowMap}"
-      >
-        <div class="quests__title">
-          <div class="quests__text quests__text_title">
-            {{ $t('quests.searchResults') }}
-          </div>
-        </div>
-        <div class="quests__tools tools">
-          <div class="tools__left">
-            <base-btn
-              :mode="'light'"
-              @click="changeSorting('price')"
-            >
-              <span class="tools__text">
-                {{ $t('quests.price') }}
-              </span>
-              <span
-                v-if="priceSort === 'desc'"
-                class="icon-Sorting_descending"
-              />
-              <span
-                v-if="priceSort === 'asc'"
-                class="icon-Sorting_ascending"
-              />
-            </base-btn>
-            <base-btn
-              :mode="'light'"
-              @click="changeSorting('time')"
-            >
-              <span class="tools__text">
-                {{ $t('quests.time') }}
-              </span>
-              <span
-                v-if="timeSort === 'desc'"
-                class="icon-Sorting_descending"
-              />
-              <span
-                v-if="timeSort === 'asc'"
-                class="icon-Sorting_ascending"
-              />
-            </base-btn>
-            <!--            <base-btn :mode="'light'">-->
-            <!--              <span class="tools__text">-->
-            <!--                {{ $t('quests.priority') }}-->
-            <!--              </span>-->
-            <!--              <span class="icon-caret_right" />-->
-            <!--            </base-btn>-->
-            <base-dd
-              v-model="priorityIndex"
-              :items="priority"
-            />
-          </div>
-          <div class="tools__right">
-            <base-btn
-              :mode="'light'"
-              @click="showSkillsModal()"
-            >
-              <span class="tools__text">
-                {{ $t('quests.type') }}
-              </span>
-              <span class="icon-caret_right" />
-            </base-btn>
-          </div>
-        </div>
+      <div class="quests__content">
         <div
-          v-if="tags.length"
-          class="quests__tags tags"
+          class="quests__body"
+          :class="{'quests__body_wrap': !isShowMap}"
         >
-          <div
-            v-for="(item, i) in tags"
-            :key="i"
-            class="tags__item"
-          >
-            <base-btn
-              class="tags__btn"
-              mode="tag"
-            >
-              {{ item }}
-              <span
-                class="icon-close_small"
-                @click="deleteTag(item)"
-              />
-            </base-btn>
-          </div>
-        </div>
-        <div class="quests__cards">
-          <div
-            v-for="(item, i) in cards"
-            :key="i"
-            class="quests__block block"
-          >
-            <div class="block__left">
-              <div class="block__img">
-                <img
-                  src="~assets/img/temp/fake-card.svg"
-                  alt=""
-                >
-              </div>
+          <div class="quests__title">
+            <div class="quests__text quests__text_title">
+              {{ $t('quests.searchResults') }}
             </div>
-            <div class="block__right">
-              <div class="block__head">
-                <div class="block__title">
-                  <div class="block__avatar">
+          </div>
+          <div class="quests__tools tools">
+            <div class="tools__left">
+              <base-btn
+                :mode="'light'"
+                @click="changeSorting('price')"
+              >
+                <span class="tools__text">
+                  {{ $t('quests.price') }}
+                </span>
+                <span
+                  v-if="priceSort === 'desc'"
+                  class="icon-Sorting_descending"
+                />
+                <span
+                  v-if="priceSort === 'asc'"
+                  class="icon-Sorting_ascending"
+                />
+              </base-btn>
+              <base-btn
+                :mode="'light'"
+                @click="changeSorting('time')"
+              >
+                <span class="tools__text">
+                  {{ $t('quests.time') }}
+                </span>
+                <span
+                  v-if="timeSort === 'desc'"
+                  class="icon-Sorting_descending"
+                />
+                <span
+                  v-if="timeSort === 'asc'"
+                  class="icon-Sorting_ascending"
+                />
+              </base-btn>
+              <!--            <base-btn :mode="'light'">-->
+              <!--              <span class="tools__text">-->
+              <!--                {{ $t('quests.priority') }}-->
+              <!--              </span>-->
+              <!--              <span class="icon-caret_right" />-->
+              <!--            </base-btn>-->
+              <base-dd
+                v-model="priorityIndex"
+                :items="priority"
+              />
+            </div>
+            <div class="tools__right">
+              <base-btn
+                :mode="'light'"
+                @click="showSkillsModal()"
+              >
+                <span class="tools__text">
+                  {{ $t('quests.type') }}
+                </span>
+                <span class="icon-caret_right" />
+              </base-btn>
+            </div>
+          </div>
+          <div
+            v-if="tags.length"
+            class="quests__tags tags"
+          >
+            <div
+              v-for="(item, i) in tags"
+              :key="i"
+              class="tags__item"
+            >
+              <base-btn
+                class="tags__btn"
+                mode="tag"
+              >
+                {{ item }}
+                <span
+                  class="icon-close_small"
+                  @click="deleteTag(item)"
+                />
+              </base-btn>
+            </div>
+          </div>
+          <div class="quests__cards">
+            <div
+              v-for="(item, i) in cards"
+              :key="i"
+              class="quests__block block"
+            >
+              <div class="block__left">
+                <div class="block__img">
+                  <img
+                    src="~assets/img/temp/fake-card.svg"
+                    alt=""
+                  >
+                </div>
+              </div>
+              <div class="block__right">
+                <div class="block__head">
+                  <div class="block__title">
+                    <div class="block__avatar">
+                      <nuxt-link
+                        class="link"
+                        :to="item.url"
+                      >
+                        <img
+                          :src="item.background"
+                          alt=""
+                        >
+                      </nuxt-link>
+                    </div>
                     <nuxt-link
                       class="link"
                       :to="item.url"
                     >
-                      <img
-                        :src="item.background"
-                        alt=""
-                      >
+                      <div class="block__text block__text_title">
+                        {{ item.title }}
+                        <span
+                          v-if="item.sub"
+                          class="block__text block__text_grey"
+                        >{{ item.sub }}</span>
+                      </div>
                     </nuxt-link>
                   </div>
-                  <nuxt-link
-                    class="link"
-                    :to="item.url"
-                  >
-                    <div class="block__text block__text_title">
-                      {{ item.title }}
-                      <span
-                        v-if="item.sub"
-                        class="block__text block__text_grey"
-                      >{{ item.sub }}</span>
-                    </div>
-                  </nuxt-link>
-                </div>
-                <div
-                  class="block__icon block__icon_fav star"
-                  @click="item.favourite = !item.favourite"
-                >
-                  <img
-                    class="star__hover"
-                    src="~assets/img/ui/star_hover.svg"
-                    alt=""
-                  >
-                  <img
-                    v-if="!item.favourite"
-                    class="star__default"
-                    src="~assets/img/ui/star_simple.svg"
-                    alt=""
-                  >
-                  <img
-                    v-if="item.favourite"
-                    class="star__checked"
-                    src="~assets/img/ui/star_checked.svg"
-                    alt=""
-                  >
-                </div>
-              </div>
-              <div class="block__locate">
-                <span class="icon-location" />
-                <span class="block__text block__text_locate">{{ item.distance }}{{ $t('distance.m') }} {{ $t('meta.fromYou') }}</span>
-              </div>
-              <div class="block__text block__text_blue">
-                {{ item.theme }}
-              </div>
-              <div class="block__text block__text_desc">
-                {{ item.desc }}
-              </div>
-              <div class="block__actions">
-                <div class="block__status">
                   <div
-                    class="block__priority"
-                    :class="getPriorityClass(item.priority)"
+                    class="block__icon block__icon_fav star"
+                    @click="item.favourite = !item.favourite"
                   >
-                    {{ getPriority(item.priority) }}
-                  </div>
-                  <div class="block__amount">
-                    {{ item.amount }} {{ item.symbol }}
+                    <img
+                      class="star__hover"
+                      src="~assets/img/ui/star_hover.svg"
+                      alt=""
+                    >
+                    <img
+                      v-if="!item.favourite"
+                      class="star__default"
+                      src="~assets/img/ui/star_simple.svg"
+                      alt=""
+                    >
+                    <img
+                      v-if="item.favourite"
+                      class="star__checked"
+                      src="~assets/img/ui/star_checked.svg"
+                      alt=""
+                    >
                   </div>
                 </div>
-                <div class="block__details">
-                  <button
-                    class="block__btn"
-                    @click="showDetails()"
-                  >
-                    <div class="block__text block__text_details">
-                      {{ $t('meta.details') }}
+                <div class="block__locate">
+                  <span class="icon-location" />
+                  <span class="block__text block__text_locate">{{ item.distance }}{{ $t('distance.m') }} {{ $t('meta.fromYou') }}</span>
+                </div>
+                <div class="block__text block__text_blue">
+                  {{ item.theme }}
+                </div>
+                <div class="block__text block__text_desc">
+                  {{ item.desc }}
+                </div>
+                <div class="block__actions">
+                  <div class="block__status">
+                    <div
+                      class="block__priority"
+                      :class="getPriorityClass(item.priority)"
+                    >
+                      {{ getPriority(item.priority) }}
                     </div>
-                    <span class="icon-short_right" />
-                  </button>
+                    <div class="block__amount">
+                      {{ item.amount }} {{ item.symbol }}
+                    </div>
+                  </div>
+                  <div class="block__details">
+                    <button
+                      class="block__btn"
+                      @click="showDetails()"
+                    >
+                      <div class="block__text block__text_details">
+                        {{ $t('meta.details') }}
+                      </div>
+                      <span class="icon-short_right" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <section class="mobile">
+      <span class="bg_white">
+        <div class="mobile__header">
+          <div class="mobile__title">
+            Quests
+          </div>
+          <div @click="toNotifications()">
+            <span class="icon-notification_outline" />
+          </div>
+        </div>
+        <div class="mobile__search">
+          <base-field
+            v-model="search"
+            is-search
+            class="search__input"
+            :placeholder="$t('quests.ui.search')"
+            :mode="'icon'"
+          />
+        </div>
+      </span>
+      <span
+        v-for="(card, i) in cards"
+        :key="i"
+      >
+        <div
+          class="quest-cards"
+        >
+          <div class="quest-cards__header">
+            <div class="avatar__container">
+              <img
+                alt=""
+                src="~assets/img/temp/photo.jpg"
+                class="user__avatar"
+              >
+            </div>
+            <div class="user__name">{{ card.title }}</div>
+            <div class="block__container">
+              <div
+                class="block__icon block__icon_fav star"
+                @click="card.favourite = !card.favourite"
+              >
+                <img
+                  class="star__hover"
+                  src="~assets/img/ui/star_hover.svg"
+                  alt=""
+                >
+                <img
+                  v-if="!card.favourite"
+                  class="star__default"
+                  src="~assets/img/ui/star_simple.svg"
+                  alt=""
+                >
+                <img
+                  v-if="card.favourite"
+                  class="star__checked"
+                  src="~assets/img/ui/star_checked.svg"
+                  alt=""
+                >
+              </div>
+            </div>
+          </div>
+          <div class="distance__container">
+            <div>
+              <span class="icon-location" />
+            </div>
+            <div class="distance__distance">{{ card.distance }}m from you</div>
+          </div>
+          <div
+            class="quest-cards__text"
+            @click="showDetails()"
+          >
+            <div class="quest-cards__title">{{ card.theme }}</div>
+            <div class="quest-cards__description"> {{ card.desc }}</div>
+          </div>
+          <div class="quest-cards__bottom">
+            <div class="quest-cards__priority_low">
+              <span>Low priority</span>
+            </div>
+            <div class="quest-cards__value">
+              {{ card.amount }} WUSD
+            </div>
+          </div>
+        </div>
+      </span>
+    </section>
   </div>
 </template>
 <script>
@@ -307,6 +394,58 @@ export default {
           url: '/company',
           distance: '100',
         },
+        {
+          title: 'Samantha Sparks',
+          sub: 'from Amazon',
+          favourite: false,
+          background: require('~/assets/img/temp/fake-card.svg'),
+          theme: 'Paint the garage quickly',
+          desc: 'Hi, i’m urgently looking for a skilled man that can paint my Garage doors and a couple of walls around the garage and by the way...',
+          priority: 2,
+          amount: 1700,
+          symbol: 'wusd',
+          url: '/company',
+          distance: '100',
+        },
+        {
+          title: 'Samantha Sparks',
+          sub: 'from Amazon',
+          favourite: false,
+          background: require('~/assets/img/temp/fake-card.svg'),
+          theme: 'Paint the garage quickly',
+          desc: 'Hi, i’m urgently looking for a skilled man that can paint my Garage doors and a couple of walls around the garage and by the way...',
+          priority: 2,
+          amount: 1700,
+          symbol: 'wusd',
+          url: '/company',
+          distance: '100',
+        },
+        {
+          title: 'Samantha Sparks',
+          sub: 'from Amazon',
+          favourite: false,
+          background: require('~/assets/img/temp/fake-card.svg'),
+          theme: 'Paint the garage quickly',
+          desc: 'Hi, i’m urgently looking for a skilled man that can paint my Garage doors and a couple of walls around the garage and by the way...',
+          priority: 2,
+          amount: 1700,
+          symbol: 'wusd',
+          url: '/company',
+          distance: '100',
+        },
+        {
+          title: 'Samantha Sparks',
+          sub: 'from Amazon',
+          favourite: false,
+          background: require('~/assets/img/temp/fake-card.svg'),
+          theme: 'Paint the garage quickly',
+          desc: 'Hi, i’m urgently looking for a skilled man that can paint my Garage doors and a couple of walls around the garage and by the way...',
+          priority: 2,
+          amount: 1700,
+          symbol: 'wusd',
+          url: '/company',
+          distance: '100',
+        },
       ],
     };
   },
@@ -320,6 +459,9 @@ export default {
     this.SetLoader(false);
   },
   methods: {
+    toNotifications() {
+      this.$router.push('/notification');
+    },
     toggleMap() {
       this.isShowMap = !this.isShowMap;
     },
@@ -364,11 +506,142 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
+.block {
+  &__container {
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+  }
+}
+
+.bg {
+  &_white {
+    background-color: $white;
+  }
+}
+
+.avatar {
+  &__container {}
+}
+.distance {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
+    align-items: center;
+    margin: 20px 20px 0 20px;
+  }
+  &__distance {
+    justify-self: flex-start;
+    align-self: center;
+    font-weight: 400;
+    font-size: 14px;
+    color: $black500;
+  }
+}
+.user {
+  &__avatar {
+    border-radius: 37px;
+    max-width: 30px;
+    max-height: 30px;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__name {
+    justify-self: flex-start;
+  }
+}
+
+.quest-cards {
+  padding: 20px 0 0 0;
+  margin: 10px 0 0 0;
+  @extend .bg_white;
+  &__title {
+    font-weight: 500;
+    font-size: 18px;
+    color: $black800;
+  }
+  &__value {
+    font-weight: 700;
+    font-size: 18px;
+    color: rgba(0, 170, 91, 1);
+  }
+  &__description {
+    margin: 10px 0 0 0;
+    font-weight: 400;
+    font-size: 14px;
+    color: $black600;
+  }
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    margin: 0 20px 0 20px;
+  }
+  &__bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 20px 0 20px;
+    padding: 0 0 16px 0;
+  }
+  &__priority {
+    font-weight: 400;
+    font-size: 12px;
+    padding: 4px 5px;
+    border-radius: 3px;
+    &_low {
+      @extend .quest-cards__priority;
+      color: #22CC14;
+      background: rgba(34, 204, 20, 0.1);
+    }
+  }
+  &__text {
+    margin: 10px 20px 0 20px;
+  }
+}
+
+.icon {
+  font-size: 25px;
+  &-notification_outline:before {
+    @extend .icon;
+    content: "\e93a";
+    color: $blue;
+  }
+  &-location:before {
+    font-size: 20px;
+    content: "\ea23";
+    color: $black500;
+  }
+}
+.mobile {
+  width: 100%;
+  height: 100%;
+  max-height: 900px;
+  &__search {}
+  &__title {
+    @include text-simple;
+    font-weight: 700;
+    font-size: 30px;
+    color: $black800;
+  }
+  &__header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 18px;
+  }
+}
+
 .link {
   cursor: pointer;
-}
-.link:hover {
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 }
 .star {
   &__default {
@@ -641,7 +914,7 @@ export default {
   &__dd {
     border-left: 1px solid #F7F8FA;
     height: 100%;
-    margin: 40px 0 0 0;
+    display: flex;
   }
   &__icon {
     margin-bottom: -10px;
@@ -686,6 +959,75 @@ export default {
   }
   .ctm-field__left {
     padding-top: 6px;
+  }
+}
+@include _2560 {
+  .mobile {
+    display: none;
+  }
+
+}
+
+@include _1700 {
+  .mobile {
+    display: none;
+  }
+
+}
+@include _1600 {
+  .mobile {
+    display: none;
+  }
+
+}
+@include _1400 {
+  .mobile {
+    display: none;
+  }
+
+}
+@include _1300 {
+  .mobile {
+    display: none;
+  }
+
+}
+@include _1199 {
+
+  .quests {
+    &__body {
+      max-width: 980px;
+    }
+    &__search {
+      max-width: 890px;
+    }
+  }
+
+  .mobile {
+    display: none;
+  }
+  .wallet {
+    margin: 0 20px 0 20px;
+  }
+}
+@include _991 {
+  .pc {
+    display: none;
+  }
+  .mobile {
+    overflow-y: auto;
+    display: grid;
+    height: 100%;
+    width: 100%;
+    max-height: 775px;
+  }
+}
+
+@include _575 {
+  .user {
+    &__name {
+      margin: 0 0 0 10px;
+    }
   }
 }
 </style>

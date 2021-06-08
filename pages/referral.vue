@@ -142,7 +142,8 @@
                     {{ el.item.userName }}
                   </div>
                 </div>
-              </template><template #cell(userID)="el">
+              </template>
+              <template #cell(userID)="el">
                 <div class="user__value_gray">
                   {{ el.item.userID }}
                 </div>
