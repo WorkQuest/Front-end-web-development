@@ -5,4 +5,6 @@ export default () => ({
   },
   userData: {},
   currentUserPosition: null,
+  allQuests: {},
+  userQuests: {},
 });

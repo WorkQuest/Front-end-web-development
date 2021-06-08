@@ -5,4 +5,6 @@ export default {
   getUserData: (state) => state.userData,
   getUserRole: (state) => state.userData?.role,
   getUserCurrentPosition: (state) => state.currentUserPosition || null,
+  getAllQuests: (state) => state.allQuests,
+  getUserQuests: (state) => state.userQuests,
 };

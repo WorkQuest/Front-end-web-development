@@ -26,4 +26,10 @@ export default {
   setCurrentUserPosition(state, data) {
     state.currentUserPosition = data;
   },
+  setAllQuests(state, data) {
+    state.allQuests = data;
+  },
+  setUserQuests(state, data) {
+    state.userQuests = data;
+  },
 };

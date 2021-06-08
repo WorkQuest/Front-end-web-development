@@ -110,13 +110,6 @@ export default {
     return {
       links: [
         { url: '/sign-up' },
-      ],
-    };
-  },
-  data() {
-    return {
-      links: [
-        { url: '/sign-up' },
         { url: '/restore' },
       ],
     };

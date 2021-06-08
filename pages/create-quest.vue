@@ -13,6 +13,7 @@
             type="gray"
             :items="priority"
           />
+          {{ this.priorityIndex }}
         </div>
         <div class="page__dd">
           <label for="category_input">{{ $t('quests.category') }}</label>
@@ -200,6 +201,7 @@ import Dropzone from 'nuxt-dropzone';
 import 'nuxt-dropzone/dropzone.css';
 import '~/assets/scss/vue2Dropzone.min.css';
 import '~/assets/scss/dropzone.scss';
+import { mapGetters } from 'vuex';
 import modals from '~/store/modals/modals';
 
 const { GeoCode } = require('geo-coder');
@@ -235,6 +237,7 @@ export default {
         '1 Year',
       ],
       addresses: [],
+      coordinates: {},
       optionsModal: {
         url: 'http://httpbin.org/anything',
         addRemoveLinks: true,
@@ -253,6 +256,9 @@ export default {
     };
   },
   computed: {
+    ...mapGetters({
+      userData: 'user/getUserData',
+    }),
     priority() {
       return [
         this.$t('priority.all'),
@@ -273,11 +279,13 @@ export default {
       this.address = address.formatted;
     },
     async getAddressInfo(address) {
+      let response = [];
       const geoCode = new GeoCode('google', { key: 'AIzaSyD32Aorm6CU9xUIrUznzYyw2d_0NTqt3Zw' });
       try {
         if (address.length) {
-          const response = await geoCode.geolookup(address);
+          response = await geoCode.geolookup(address);
           this.addresses = JSON.parse(JSON.stringify(response));
+          this.coordinates = JSON.parse(JSON.stringify({ lng: response[0].lng, lat: response[0].lat }));
         }
       } catch (e) {
         console.log(e);
@@ -294,12 +302,24 @@ export default {
       this.pickerValue -= 1;
     },
     showQuestCreatedModal() {
-      console.log(this.priorityIndex);
-      const categoryBlock = document.getElementById('category_input');
-      console.log(this.categories[this.categoryIndex]);
-      this.ShowModal({
-        key: modals.questCreated,
-      });
+      const createQuestData = {
+        priority: this.priorityIndex,
+        category: this.categories[this.categoryIndex],
+        title: this.questTitle,
+        description: this.textarea,
+        price: this.price,
+        adType: this.adMode1 ? 1 : 0,
+        location: {
+          longitude: this.coordinates.lng,
+          latitude: this.coordinates.lat,
+        },
+      };
+      const response = this.$store.dispatch('user/questCreate', createQuestData);
+      if (response?.ok) {
+        this.ShowModal({
+          key: modals.questCreated,
+        });
+      }
     },
   },
 };

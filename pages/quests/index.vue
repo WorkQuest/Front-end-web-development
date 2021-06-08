@@ -165,7 +165,7 @@
                       :to="item.url"
                     >
                       <div class="block__text block__text_title">
-                        {{ item.title }}
+                        {{ quests.count }}
                         <span
                           v-if="item.sub"
                           class="block__text block__text_grey"
@@ -447,9 +447,11 @@ export default {
   computed: {
     ...mapGetters({
       tags: 'ui/getTags',
+      quests: 'user/getAllQuests',
     }),
   },
   async mounted() {
+    this.allQuests();
     this.SetLoader(true);
     this.SetLoader(false);
   },
@@ -473,6 +475,9 @@ export default {
         this.timeSort === 'desc' ? this.timeSort = 'asc' : this.timeSort = 'desc';
       }
     },
+    async allQuests() {
+      return await this.$store.dispatch('user/getAllQuests');
+    },
     deleteTag(tag) {
       this.$store.dispatch('ui/deleteTags', tag);
     },
@@ -483,17 +488,19 @@ export default {
     },
     getPriority(index) {
       const priority = {
-        0: this.$t('priority.low'),
-        1: this.$t('priority.normal'),
-        2: this.$t('priority.urgent'),
+        0: this.$t('priority.all'),
+        1: this.$t('priority.low'),
+        2: this.$t('priority.normal'),
+        3: this.$t('priority.urgent'),
       };
       return priority[index] || 'None';
     },
     getPriorityClass(index) {
       const priority = {
-        0: 'block__priority_low',
-        1: 'block__priority_normal',
-        2: 'block__priority_urgent',
+        0: 'block__priority_all',
+        1: 'block__priority_low',
+        2: 'block__priority_normal',
+        3: 'block__priority_urgent',
       };
       return priority[index] || '';
     },
@@ -701,6 +708,10 @@ export default {
     line-height: 130%;
     height: 24px;
     padding: 0 5px;
+    &_all {
+      background: rgba(34, 204, 20, 0.1);
+      color: #22CC14;
+    }
     &_low {
       background: rgba(34, 204, 20, 0.1);
       color: #22CC14;
