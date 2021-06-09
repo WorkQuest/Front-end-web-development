@@ -422,6 +422,7 @@
               </div>
               <div
                 class="mobile__option"
+                @click="to2FA()"
               >
                 <div class="option__title">
                   {{ $t('settings.2FA') }}
@@ -620,6 +621,10 @@ export default {
     switchSms() {
       this.sms = !this.sms;
       this.$router.push('/sms-verification');
+    },
+    to2FA() {
+      this.twoFa = !this.twoFa;
+      this.$router.push('/2fa');
     },
   },
 };
