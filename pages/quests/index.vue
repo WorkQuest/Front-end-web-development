@@ -134,7 +134,7 @@
           </div>
           <div class="quests__cards">
             <div
-              v-for="(item, i) in cards"
+              v-for="(item, i) in allQuestsData.quests"
               :key="i"
               class="quests__block block"
             >
@@ -152,7 +152,7 @@
                     <div class="block__avatar">
                       <nuxt-link
                         class="link"
-                        :to="item.url"
+                        :to="item.userId"
                       >
                         <img
                           :src="item.background"
@@ -160,12 +160,12 @@
                         >
                       </nuxt-link>
                     </div>
+                    hardcode text
                     <nuxt-link
                       class="link"
-                      :to="item.url"
+                      :to="item.id"
                     >
                       <div class="block__text block__text_title">
-                        {{ quests.count }}
                         <span
                           v-if="item.sub"
                           class="block__text block__text_grey"
@@ -198,13 +198,13 @@
                 </div>
                 <div class="block__locate">
                   <span class="icon-location" />
-                  <span class="block__text block__text_locate">{{ item.distance }}{{ $t('distance.m') }} {{ $t('meta.fromYou') }}</span>
+                  <span class="block__text block__text_locate">{{ getDistanceFromLatLonInKm(item.location.latitude, item.location.longitude, 56.475565, 84.967270) }}{{ $t('distance.m') }} {{ $t('meta.fromYou') }}</span>
                 </div>
                 <div class="block__text block__text_blue">
-                  {{ item.theme }}
+                  {{ item.title }}
                 </div>
                 <div class="block__text block__text_desc">
-                  {{ item.desc }}
+                  {{ item.description }}
                 </div>
                 <div class="block__actions">
                   <div class="block__status">
@@ -215,19 +215,24 @@
                       {{ getPriority(item.priority) }}
                     </div>
                     <div class="block__amount">
-                      {{ item.amount }} {{ item.symbol }}
+                      {{ item.price }} {{ item.symbol }}
                     </div>
                   </div>
                   <div class="block__details">
-                    <button
-                      class="block__btn"
-                      @click="showDetails()"
+                    <!--                    <button-->
+                    <!--                      class="block__btn"-->
+                    <!--                      @click="showDetails(item.id)"-->
+                    <!--                    >-->
+                    <nuxt-link
+                      class="link"
+                      :to="`/quests/${item.id}`"
                     >
                       <div class="block__text block__text_details">
                         {{ $t('meta.details') }}
                       </div>
                       <span class="icon-short_right" />
-                    </button>
+                    </nuxt-link>
+                    <!--                    </button>-->
                   </div>
                 </div>
               </div>
@@ -447,7 +452,7 @@ export default {
   computed: {
     ...mapGetters({
       tags: 'ui/getTags',
-      quests: 'user/getAllQuests',
+      allQuestsData: 'user/getAllQuests',
     }),
   },
   async mounted() {
@@ -456,14 +461,35 @@ export default {
     this.SetLoader(false);
   },
   methods: {
+    getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+      const R = 6371; // Radius of the earth in km
+      const dLat = this.deg2rad(lat2 - lat1); // deg2rad below
+      const dLon = this.deg2rad(lon2 - lon1);
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+        + Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2))
+        * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      let d = (R * c) * 1000; // Distance in km
+      if (d >= 1000) {
+        d = '+1000';
+      } else if (d >= 500) {
+        d = '+500';
+      } else {
+        d = '-500';
+      }
+      return d;
+    },
+    deg2rad(deg) {
+      return deg * (Math.PI / 180);
+    },
     toNotifications() {
       this.$router.push('/notification');
     },
     toggleMap() {
       this.isShowMap = !this.isShowMap;
     },
-    showDetails() {
-      this.$router.push('/quests/1');
+    showDetails(itemId) {
+      this.$router.push('/quests/', itemId);
     },
     changeSorting(type) {
       if (type === 'price') {

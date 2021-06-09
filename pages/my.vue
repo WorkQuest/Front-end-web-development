@@ -24,7 +24,6 @@
                 :key="item.id"
                 class="quests__cards__all"
               >
-                {{  }}
                 <div
                   class="quests__block block"
                 >
@@ -156,33 +155,43 @@
                       >
                         {{ item.price }} {{ item.symbol }}
                       </div>
+
                       <div class="block__details">
-                        <button
-                          v-if="item.type !== 3"
-                          class="block__btn"
-                          @click="showDetails()"
+                        <nuxt-link
+                          class="link"
+                          :to="`/quests/${item.id}`"
                         >
-                          <span
-                            class="block__text block__text_details"
-                          >
+                          <div class="block__text block__text_details">
                             {{ $t('meta.details') }}
-                          </span>
-                          <span class="icon-short_right" />
-                        </button>
-                        <div
-                          v-else
-                          class="block__rating"
-                        >
-                          <div class="block__rating block__rating_star">
-                            <button
-                              @click="showReviewModal(item.rating)"
-                            >
-                              <b-form-rating
-                                v-model="item.rating"
-                              />
-                            </button>
                           </div>
-                        </div>
+                          <span class="icon-short_right" />
+                        </nuxt-link>
+                        <!--                        <button-->
+                        <!--                          v-if="item.type !== 3"-->
+                        <!--                          class="block__btn"-->
+                        <!--                          @click="showDetails()"-->
+                        <!--                        >-->
+                        <!--                          <span-->
+                        <!--                            class="block__text block__text_details"-->
+                        <!--                          >-->
+                        <!--                            {{ $t('meta.details') }}-->
+                        <!--                          </span>-->
+                        <!--                          <span class="icon-short_right" />-->
+                        <!--                        </button>-->
+                        <!--                        <div-->
+                        <!--                          v-else-->
+                        <!--                          class="block__rating"-->
+                        <!--                        >-->
+                        <!--                          <div class="block__rating block__rating_star">-->
+                        <!--                            <button-->
+                        <!--                              @click="showReviewModal(item.rating)"-->
+                        <!--                            >-->
+                        <!--                              <b-form-rating-->
+                        <!--                                v-model="item.rating"-->
+                        <!--                              />-->
+                        <!--                            </button>-->
+                        <!--                          </div>-->
+                        <!--                        </div>-->
                       </div>
                     </div>
                   </div>

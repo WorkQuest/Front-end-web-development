@@ -13,7 +13,7 @@
             type="gray"
             :items="priority"
           />
-          {{ this.priorityIndex }}
+          {{ priorityIndex }}
         </div>
         <div class="page__dd">
           <label for="category_input">{{ $t('quests.category') }}</label>
@@ -315,7 +315,7 @@ export default {
         },
       };
       const response = this.$store.dispatch('user/questCreate', createQuestData);
-      if (response?.ok) {
+      if (response.ok) {
         this.ShowModal({
           key: modals.questCreated,
         });
