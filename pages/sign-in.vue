@@ -172,7 +172,7 @@ export default {
       }
     },
     async redirectSocialLink(socialNetwork) {
-      window.location = `${process.env.baseUrl}/v1/auth/login/${socialNetwork}`;
+      window.open = `${process.env.baseUrl}/v1/auth/login/${socialNetwork}`;
     },
     showRestoreModal() {
       this.ShowModal({
