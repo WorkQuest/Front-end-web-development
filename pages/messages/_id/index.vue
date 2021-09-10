@@ -1,131 +1,97 @@
 <template>
-  <div class="main">
-    <div class="main__body">
-      <h2 class="page__title">
+  <div class="chat-page">
+    <div class="chat-page__body">
+      <h2 class="chat-page__header">
         {{ $t('chat.messages') }}
       </h2>
-      <div class="chat__body">
-        <div class="chat__header">
-          <div class="chat__title">
-            <div
-              class="arrow-back"
-              @click="showDetails()"
-            >
-              <span
-                class="icon-short_left"
-              />
-              <span>{{ $t('chat.chat') }}</span>
-            </div>
-            <ChatMenu />
+      <div class="chat-container">
+        <div class="chat-container__header">
+          <div
+            class="chat-container__arrow-back"
+            @click="goBackToChatsList()"
+          >
+            <span class="icon-short_left" />
+            <span>{{ $t('chat.chat') }}</span>
           </div>
+          <div class="chat-container__chat-name">
+            {{}}
+          </div>
+          <ChatMenu />
         </div>
         <div
-          id="chat__messages"
-          class="chat__messages"
+          class="chat-container__scroll-cont"
+          @scroll="handleScroll($event)"
         >
-          <div class="chat__info-message">
-            <div class="name__underline">
-              Samantha Sparcs
-            </div>
-            <div class="event">
-              {{ $t('chat.invitedYou') }}
-            </div>
-          </div>
-          <div class="info">
-            <div class="quest__info">
-              <div class="quest__name">
-                Paint the garage quickly
-              </div>
-            </div>
-          </div>
           <div
-            v-for="(item, i) in messages"
-            :key="i"
+            ref="ScrollContainer"
+            class="chat-container__messages"
           >
             <div
-              class="chat__message"
+              v-for="message in messages.list"
+              :key="message.id"
+              class="chat-container__message message"
             >
-              <div>
-                <div class="row__container">
-                  <div class="chat__img-container">
-                    <img
-                      class="chat__img"
-                      src="~/assets/img/temp/profile.svg"
-                    >
+              <img
+                src=""
+                alt=""
+                class="message__avatar"
+              >
+              <div class="message__data">
+                <div class="message__title">
+                  {{}}
+                </div>
+                <div class="message__bubble">
+                  <div class="message__title">
+                    {{ message.text }}
                   </div>
-                  <div class="chat__name-container">
-                    <div class="chat__name">
-                      {{ item.userName }}
-                    </div>
-                    <div class="chat__star">
-                      <div
-                        class="block__icon block__icon_fav star"
-                        @click="favoritesHandler(item)"
-                      >
-                        <img
-                          v-if="!item.isFavourite"
-                          class="star__hover"
-                          src="~assets/img/ui/star_hover.svg"
-                          alt=""
-                        >
-                        <img
-                          v-if="!item.isFavourite"
-                          class="star__default"
-                          src="~assets/img/ui/star_simple.svg"
-                          alt=""
-                        >
-                        <img
-                          v-if="item.isFavourite"
-                          class="star__checked"
-                          src="~assets/img/ui/star_checked.svg"
-                          alt=""
-                        >
-                      </div>
-                    </div>
+                  <div
+                    v-if="message.medias.length"
+                    class="message__media"
+                  >
+                    {{}}
+                  </div>
+                  <div class="message__time message__title message__title_gray">
+                    {{ setCurrDate(message.createdAt) }}
                   </div>
                 </div>
-                <div
-                  class="message__interlocutor"
-                  :class="{ message__owner: +item.type === 2 }"
-                >
-                  <span class="message__body">
-                    {{ item.body }}
-                  </span>
-                  <div class="message__time">
-                    {{ item.messageTime }}
-                  </div>
-                </div>
+              </div>
+              <div class="message__star-cont">
+                {{}}
               </div>
             </div>
           </div>
         </div>
-        <div class="chat__panel">
-          <div class="input__wrapper">
-            <input
-              id="input__file"
-              name="file"
-              type="file"
-              class="input input__file chat__btn_add"
-              multiple
+        <div class="chat-container__footer">
+          <div class="chat-container__file-cont">
+            <ValidationProvider
+              v-slot="{validate}"
+              rules="required|ext:png,jpeg,jpg,gif,mp4,mkv,mov,avi,xml,pdf,doc,tiff,txt,docx"
             >
+              <input
+                id="input__file"
+                name="file"
+                type="file"
+                class="chat-container__file-input"
+                multiple
+                @change="getFiles($event, validate)"
+              >
+            </ValidationProvider>
             <label
               for="input__file"
-              class="input__file-button"
+              class="chat-container__file-button"
             >
               <span class="icon-link" />
             </label>
           </div>
-          <div class="message__input">
-            <div class="input">
-              <base-field
-                v-model="message_input"
-                :placeholder="$t('chat.writeYouMessage')"
-              />
-            </div>
-          </div>
+          <base-field
+            v-model="messageText"
+            :placeholder="$t('chat.writeYouMessage')"
+            is-hide-error
+          />
           <button
-            class="chat__btn_spend"
-            @click="sendMessages()"
+            class="chat-container__send-btn"
+            :class="{'chat-container__send-btn_active' : messageText}"
+            @click="handleSendMessage()"
           >
             <span class="icon-send" />
           </button>
@@ -149,27 +115,79 @@ export default {
   data() {
     return {
       isShowFavourite: false,
-      message_input: '',
+      messageText: '',
+      filter: {
+        offset: 0,
+        limit: 20,
+      },
+      today: moment(new Date()),
     };
   },
   computed: {
     ...mapGetters({
       messages: 'data/getMessages',
-
     }),
   },
   async mounted() {
     this.SetLoader(true);
+    await this.getMessages();
+    this.scrollToBottom();
     this.SetLoader(false);
     const isChatNotificationShown = !!localStorage.getItem('isChatNotificationShown');
     if (!isChatNotificationShown) this.showNoticeModal();
   },
   methods: {
-    scrollChat() {
-      const chat = this.$el.querySelector('#chat__messages');
-      setTimeout(() => {
-        chat.scrollTop = chat.scrollHeight;
-      }, 100);
+    async getFiles(ev, validate) {
+      const { files } = ev.target;
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        // eslint-disable-next-line no-await-in-loop
+        const isValid = await validate(file);
+        console.log(isValid);
+      }
+
+      // console.log(validate);
+      // const isValid = await validate(ev);
+      // console.log(isValid);
+
+      ev.target.value = null;
+      // if (!isValid.valid || !files.length) return;
+
+      // for (let i = 0; i < files.length; i++) {
+      //   const file = files[i];
+      // }
+    },
+    handleScroll(ev) {
+      // console.log(ev.target);
+    },
+    async getMessages() {
+      const payload = {
+        params: this.filter,
+        chatId: this.$route.params.id,
+      };
+      try {
+        await this.$store.dispatch('data/getMessagesList', payload);
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    setCurrDate(msgDate) {
+      const { today } = this;
+      const momentDate = moment(msgDate);
+      let format = '';
+      if (momentDate.format('DD MM YY') !== today.format('DD MM YY')) {
+        format += 'DD MMM';
+        if (momentDate.format('YYYY') > today.format('YYYY')) {
+          format += ' YY';
+        }
+        format += ', ';
+      }
+
+      return momentDate.format(`${format}HH:mm`);
+    },
+    scrollToBottom() {
+      setTimeout(() => this.$refs.ScrollContainer.scrollIntoView(false), 100);
     },
     showNoticeModal() {
       this.ShowModal({
@@ -179,29 +197,47 @@ export default {
     isRating(type) {
       return (type === 1 || type === 2);
     },
-    showDetails() {
+    goBackToChatsList() {
       this.$router.push('/messages');
     },
-    sendMessages() {
-      if (!this.message_input && !this.message_input.length) {
-        return;
-      }
-      const message = {
-        userName: 'Rosalia Vanse',
-        type: 2,
-        body: this.message_input,
-        isFavourite: false,
-        messageTime: moment().format('HH:mm'),
+    async handleSendMessage() {
+      // const payload = {
+      //   config: {
+      //     text: this.messageText,
+      //     medias: [],
+      //   },
+      //   userId: '8407b757-95b3-4862-95b6-e6d8d6d03341',
+      // };
+      // this.messageText = '';
+      //
+      // try {
+      //   this.$store.dispatch('data/handleCreateChat', payload);
+      // } catch (e) {
+      //   console.log(e);
+      // }
+
+      if (!this.messageText) return;
+
+      const payload = {
+        config: {
+          text: this.messageText,
+          medias: [],
+        },
+        chatId: this.$route.params.id,
       };
-      // TODO replace with mutation
-      console.log('send: ', message);
-      this.message_input = '';
-      this.scrollChat();
+      this.messageText = '';
+      try {
+        await this.$store.dispatch('data/handleSendMessage', payload);
+        await this.getMessages();
+        this.scrollToBottom();
+      } catch (e) {
+        console.log(e);
+      }
     },
     onEnter(e, callback) {
       if (!e.ctrlKey) {
         e.preventDefault();
-        callback(this.sendMessages);
+        callback(this.handleSendMessage);
       }
     },
     favoritesHandler(item) {
@@ -216,7 +252,169 @@ export default {
 };
 </script>
 
+<style lang="scss">
+  .template {
+    &__content {
+      grid-template-rows: 72px 1fr 72px !important;
+    }
+
+    &__main {
+      padding-bottom: 50px !important;
+    }
+  }
+  .footer {
+    &__body {
+      justify-content: flex-end !important;
+    }
+    &__top {
+      display: none !important;
+    }
+  }
+</style>
+
 <style lang="scss" scoped>
+.chat-page {
+  @include main;
+
+  &__header {
+    padding: 20px 0;
+  }
+}
+
+.chat-container {
+  background-color: $white;
+  border: 1px solid #E9EDF2;
+  border-radius: 6px;
+
+  &__header {
+    border-bottom: 1px solid #E9EDF2;
+    padding: 15px;
+    font-weight: 500;
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+  }
+
+  &__arrow-back {
+    display: flex;
+    cursor: pointer;
+    transition: .5s;
+    &:hover {
+      filter: drop-shadow(4px 4px 3px rgba(34, 60, 80, 0.4));
+    }
+  }
+
+  &__chat-name {
+    justify-self: center;
+  }
+
+  &__scroll-cont {
+    overflow: auto;
+    padding: 20px 20px 0;
+    height: calc(100vh - 420px);
+    display: grid;
+    align-items: end;
+  }
+
+  &__footer {
+    height: 70px;
+    padding: 0 15px;
+    border-top: 1px solid #E9EDF2;
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__file-cont {
+    height: 40px;
+  }
+
+  &__file-button {
+    height: 40px;
+    background: #F7F8FA;
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .2s;
+    &:hover {
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    }
+  }
+
+  &__file-input {
+    display: none;
+  }
+
+  &__send-btn {
+    height: 40px;
+    border-radius: 6px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    transition: .2s;
+    background-color: $black0;
+    &_active {
+      pointer-events: all;
+      opacity: 1;
+      &:hover {
+        box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      }
+    }
+  }
+
+  &__messages {
+    display: grid;
+    gap: 20px;
+  }
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 43px 0.7fr max-content;
+  gap: 10px;
+  height: max-content;
+
+  &:last-child {
+    padding-bottom: 20px;
+  }
+
+  &__time {
+    justify-self: end;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+
+    &_gray {
+      color: #AAB0B9;
+      font-size: 14px;
+    }
+  }
+
+  &__data {
+    display: grid;
+    gap: 10px;
+  }
+
+  &__bubble {
+    display: grid;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #F7F8FA;
+  }
+}
 
 .styles {
   &__between {
@@ -241,11 +439,7 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: .5s;
-  &:hover {
-    filter: drop-shadow(4px 4px 3px rgba(34, 60, 80, 0.4));
-  }
+
 }
 
 .icon {
@@ -273,17 +467,11 @@ export default {
     content: "\e951";
     color: $black500;
   }
-  &-more {
-    margin: 0 15px 0 0;
-  }
 }
 
 .input {
   &__wrapper {
-    width: 100%;
-    position: relative;
-    margin: 15px 0;
-    text-align: center;
+    height: 40px;
   }
   &__file {
     opacity: 0;
@@ -304,26 +492,6 @@ export default {
   &__file-button-text {
     line-height: 1;
     margin-top: 1px;
-  }
-  &__file-button {
-    width: 100%;
-    max-width: 40px;
-    height: 40px;
-    background: #F7F8FA;
-    color: #fff;
-    font-size: 1.125rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 3px;
-    cursor: pointer;
-    margin: 0 0 0 10px;
-    transition: .2s;
-    &:hover {
-      @extend .input__file-button;
-      box-shadow: 0 0 6px rgba(0,0,0,0.2);
-    }
   }
 }
 
@@ -368,11 +536,6 @@ export default {
   }
 }
 
-.info {
-  display: flex;
-  justify-content: center;
-}
-
 .quest {
   &__info {
     background: rgba(0, 131, 199, 0.1);
@@ -395,13 +558,7 @@ export default {
 }
 
 .name {
-  &__underline {
-    text-decoration: underline;
-    margin: 20px 10px 20px 0;
-    font-size: 16px;
-    color: $black800;
-    font-weight: 400;
-  }
+
 }
 
 .input {
@@ -413,38 +570,6 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-  }
-}
-
-.message {
-  &__time {
-    margin: 15px 15px 0 15px;
-    padding: 0;
-    text-align: right;
-  }
-  &__interlocutor {
-    background-color:#0083C7;
-    margin: 0 54px 0 60px;
-    border-radius: 6px;
-    color: $white;
-    padding: 15px;
-  }
-  &__owner {
-    background-color:$black0;
-    color: $black800;
-    padding: 15px;
-    margin: 0 54px 0 60px;
-    border-radius: 6px;
-  }
-  &__input {
-    width: 100%;
-    display: flex;
-    height: 70px;
-  }
-  &__body {
-    display: flex;
-    word-break: break-word;
-    width: 100%;
   }
 }
 
@@ -462,53 +587,11 @@ export default {
     margin: 0 10px 0 10px;
   }
 }
-.main {
-  @include main;
-  &-white {
-    @include main-white;
-    justify-content: flex-start;
-    border-radius: 6px;
-  }
-  &__body {
-    margin: 0 10px 0 10px;
-  }
-}
+
 .chat {
-  &__info-message {
-    display: flex;
-    justify-content: center;
-  }
   &__header {
     border: 1px solid #E9EDF2;
     border-radius: 6px 0 0 0;
-  }
-  &__btn {
-    width: 100%;
-    height: 100%;
-    max-width:40px;
-    max-height: 40px;
-    border-radius: 6px;
-    transition: .2s;
-    background-color: $black0;
-    &_spend {
-      @extend .chat__btn;
-      margin: 0 11px 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      &:hover {
-        @extend .chat__btn_spend;
-        box-shadow: 0 0 6px rgba(0,0,0,0.2);
-      }
-    }
-    &_add {
-      @extend .chat__btn;
-      margin: 0 -11px 0 0;
-      &:hover {
-        @extend .chat__btn_add;
-        box-shadow: 0 0 6px rgba(0,0,0,0.2);
-      }
-    }
   }
   &__panel {
     height: 100%;

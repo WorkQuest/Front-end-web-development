@@ -800,6 +800,8 @@ export default {
       userData: 'user/getUserData',
       imageData: 'user/getImageData',
       userRole: 'user/getUserRole',
+      token: 'user/accessToken',
+      connections: 'data/notificationsConnectionStatus',
     }),
     locales() {
       return [
@@ -1079,7 +1081,8 @@ export default {
     },
   },
   async mounted() {
-    this.GetLocation();
+    await this.GetLocation();
+    await this.initWSListeners();
     this.localUserData = JSON.parse(JSON.stringify(this.userData));
   },
   created() {
@@ -1089,6 +1092,15 @@ export default {
     window.removeEventListener('resize', this.userWindowChange);
   },
   methods: {
+    async initWSListeners() {
+      const { chatConnection, notifsConnection } = this.connections;
+      if (!chatConnection) {
+        await this.$wsChat.connect(this.token);
+        this.$wsChat.subscribe('/notifications/chat', async (chatEv) => {
+          console.log(chatEv);
+        });
+      }
+    },
     setLocale(item) {
       this.currentLocale = item.localeText;
     },

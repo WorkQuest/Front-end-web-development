@@ -24,4 +24,6 @@ export default {
   getEducations: (state) => state.userInfo?.educations,
   getWorkExp: (state) => state.userInfo?.workExp,
   getUserDesc: (state) => state.userInfo?.desc,
+  getChats: (state) => state.chats,
+  notificationsConnectionStatus: (state) => state.connections,
 };
