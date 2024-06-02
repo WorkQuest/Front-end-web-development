@@ -115,7 +115,7 @@ export default {
         },
         {
           title: this.$t('disputes.questSalary'),
-          value: `${new BigNumber(item.quest.price).shiftedBy(-18).toString()} ${TokenSymbols.WUSD}`,
+          value: `${new BigNumber(item.quest.price).shiftedBy(-6).toString()} ${TokenSymbols.USDT}`,
         },
         {
           title: this.$t('disputes.disputeTime'),
