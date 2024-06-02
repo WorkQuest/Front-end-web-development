@@ -54,12 +54,13 @@
         class="ctm-field__input"
         :class="[
           { 'ctm-field__input_error': errors[0] },
+          { 'currencies-input': currencyDd },
           {
             'ctm-field__input_padding-r':
               $slots['right-absolute'] || (value && isSearch && !isBusySearch),
           },
         ]"
-        :placeholder="placeholder"
+        :placeholder="currencyDd ? `0 ${selectedToken}` : placeholder"
         :data-selector="`BASE-INPUT-FIELD-${dataSelector.toUpperCase()}`"
         :value="mode === 'convertDate' ? convertDate(value) : value"
         :type="customType"
@@ -71,6 +72,11 @@
         @focus="$emit('focus')"
         @blur="$emit('blur')"
       >
+      <currency-dd
+        v-if="currencyDd"
+        :selected-token="selectedToken"
+        @selectingToken="selectToken"
+      />
       <password-input-tooltip v-if="errors.length > 0 && showTooltipIcon" />
       <div
         v-if="value && isSearch && !isBusySearch"
@@ -196,7 +202,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    currencyDd: {
+      type: Boolean,
+      default: false,
+    },
   },
+  data: () => ({
+    selectedToken: 'USDC',
+  }),
   computed: {
     customType() {
       return this.type === 'number' ? 'customNumber' : this.type;
@@ -310,10 +323,16 @@ export default {
     convertDate(date) {
       return this.$moment(date).format('DD.MM.YYYY');
     },
+    selectToken(tokenName) {
+      this.selectedToken = tokenName;
+    },
   },
 };
 </script>
 <style lang="scss" scoped>
+.currencies-input {
+  padding-right: 84px !important;
+}
 .ctm-field {
   position: relative;
 
